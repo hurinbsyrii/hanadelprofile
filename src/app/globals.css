@@ -1,19 +1,21 @@
 @import "tailwindcss";
 
 :root {
-  --background: #090d16;
-  --foreground: #f1f5f9;
-  --card-bg: #0f172a;
-  --card-border: #1e293b;
-  --accent: #38bdf8;
-  --accent-hover: #0ea5e9;
+  --background: #fff8fa;
+  --foreground: #2d1822;
+  --rose-primary: #d96b8c;
+  --rose-hover: #c45576;
+  --rose-soft: #faeaf0;
+  --rose-border: #f4cdd9;
+  --text-main: #2b1822;
+  --text-muted: #785b6b;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-sans);
+  --font-script: var(--font-script);
 }
 
 html {
@@ -23,6 +25,19 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
   overflow-x: hidden;
+}
+
+.font-script {
+  font-family: var(--font-script), cursive;
+}
+
+/* Custom aesthetic utility classes matching the pink editorial reference */
+.shadow-pink-glow {
+  box-shadow: 0 10px 30px -8px rgba(217, 107, 140, 0.25);
+}
+
+.shadow-soft {
+  box-shadow: 0 4px 20px -2px rgba(133, 67, 88, 0.08);
 }

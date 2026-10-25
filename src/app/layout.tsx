@@ -1,20 +1,22 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans, Dancing_Script } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const jakartaSans = Plus_Jakarta_Sans({
+  variable: "--font-sans",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const dancingScript = Dancing_Script({
+  variable: "--font-script",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "Hanadel | Frontend Developer Portfolio",
-  description: "Personal portfolio website built with Next.js, Tailwind CSS, and TypeScript.",
+  title: "Hana Delisha binti Nazri | Student Portfolio",
+  description: "Secondary school student portfolio of Hana Delisha binti Nazri (15 years old) — showcasing education, leadership, co-curricular activities, and school projects.",
 };
 
 export default function RootLayout({
@@ -25,9 +27,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${jakartaSans.variable} ${dancingScript.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-slate-950 text-slate-100 selection:bg-cyan-500 selection:text-white">
+      <body className="min-h-full flex flex-col bg-[#fff8fa] text-[#2e1c27] selection:bg-[#e07a97] selection:text-white">
         {children}
       </body>
     </html>
