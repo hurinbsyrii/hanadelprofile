@@ -1,39 +1,34 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import {
-  BookOpen,
-  Award,
-  Users,
-  Compass,
   Trophy,
-  Sparkles,
-  Heart,
-  CheckCircle2,
-  Calendar,
-  MapPin,
-  Mail,
-  Send,
-  Star,
-  Download,
-  ExternalLink,
-  ChevronRight,
-  GraduationCap,
+  Award,
   Medal,
-  Palette,
-  Laptop,
-  MessageSquare,
+  Star,
+  CheckCircle2,
+  Sparkles,
   ShieldCheck,
+  BookOpen,
+  GraduationCap,
+  Users,
+  Send,
+  Mail,
+  MapPin,
+  ArrowRight,
+  ChevronRight,
   Menu,
-  X
+  X,
+  Compass,
+  Palette,
+  Heart
 } from "lucide-react";
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activityFilter, setActivityFilter] = useState("all");
   const [formSubmitted, setFormSubmitted] = useState(false);
-  const [formData, setFormData] = useState({ name: "", email: "", relationship: "Teacher/School", message: "" });
+  const [formData, setFormData] = useState({ name: "", email: "", role: "Teacher/School", message: "" });
 
   const handleContactSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -41,70 +36,94 @@ export default function Home() {
     setFormSubmitted(true);
     setTimeout(() => {
       setFormSubmitted(false);
-      setFormData({ name: "", email: "", relationship: "Teacher/School", message: "" });
+      setFormData({ name: "", email: "", role: "Teacher/School", message: "" });
     }, 4500);
   };
 
   const activities = [
     {
+      tabLabel: "BADAN BERUNIFORM",
       title: "Pandu Puteri Remaja (Girl Guides)",
       category: "uniform",
-      categoryName: "Badan Beruniform",
       role: "Patrol Leader (Ketua Patrol)",
       year: "2024 - Present",
-      description: "Active member in weekly marching drills (kawad kaki), camping expeditions, outdoor survival skills, and earning community service badges.",
-      tags: ["Kawad Kaki", "Camping", "First Aid", "Community Service"],
-      badge: "Uniform Body"
+      description: "Active leader in weekly marching drills (kawad kaki), camping expeditions, outdoor survival skills, and earning community service badges.",
+      bulletPoints: [
+        "Led squad of 12 members in annual march-past drill",
+        "Completed first-aid and outdoor knotting certifications",
+        "Participated in state-level Girl Guides community camps"
+      ],
+      tags: ["Kawad Kaki", "Camping", "First Aid", "Leadership"]
     },
     {
+      tabLabel: "KELAB & PERSATUAN",
       title: "Kelab STEM & Inovasi (STEM & Innovation Club)",
       category: "clubs",
-      categoryName: "Kelab & Persatuan",
       role: "Setiausaha (Secretary)",
       year: "2024 - Present",
-      description: "Documenting meeting minutes, organizing the annual School Science Week interactive exhibits, and coordinating team participation in state robotics competitions.",
-      tags: ["Science Exhibits", "Meeting Minutes", "Innovation", "Robotics"],
-      badge: "Club Executive"
+      description: "Documenting official meeting agendas and minutes, organizing School Science Week exhibitions, and coordinating robotics challenge entries.",
+      bulletPoints: [
+        "Prepared comprehensive monthly activity documentation",
+        "Managed interactive demonstration booth during STEM Day",
+        "Co-designed automated greywater filtration model"
+      ],
+      tags: ["Science Exhibits", "Meeting Minutes", "Innovation", "Robotics"]
     },
     {
-      title: "Lembaga Pengawas Sekolah (School Prefects Board)",
+      tabLabel: "KEPIMPINAN",
+      title: "Lembaga Pengawas Sekolah (Prefects Board)",
       category: "leadership",
-      categoryName: "Kepimpinan",
       role: "School Prefect (Pengawas Sekolah)",
       year: "2024 - Present",
-      description: "Assisting teachers during daily morning assemblies, upholding student discipline, guiding junior students, and serving as master of ceremonies for school events.",
-      tags: ["Discipline", "Morning Assembly", "Emcee", "Mentoring"],
-      badge: "Leadership"
+      description: "Assisting teachers with daily morning assemblies, maintaining school discipline, welcoming guest dignitaries, and mentoring junior Form 1 students.",
+      bulletPoints: [
+        "Master of Ceremonies (Emcee) for weekly school assembly",
+        "Monitored student compliance and punctuality records",
+        "Completed 3-day Prefects Leadership & Crisis Camp"
+      ],
+      tags: ["Discipline", "Emcee", "Assembly", "Mentorship"]
     },
     {
+      tabLabel: "KELAB & PERSATUAN",
       title: "Kelab Bahasa Inggeris (English Language Society)",
       category: "clubs",
-      categoryName: "Kelab & Persatuan",
-      role: "Active Member & Speaker",
+      role: "Active Member & Orator",
       year: "2023 - Present",
-      description: "Participating in public speaking showcases, choral speaking training, vocabulary quizzes, and contributing short stories for the school English bulletin.",
-      tags: ["Public Speaking", "Choral Speaking", "Debate", "Writing"],
-      badge: "Language & Arts"
+      description: "Participating in public speaking competitions, choral speaking performances, vocabulary bees, and writing for the school English journal.",
+      bulletPoints: [
+        "1st Place in Inter-Class English Public Speaking 2024",
+        "Lead voice performer for English Week Choral Speaking",
+        "Organized English language scrabble & spelling bees"
+      ],
+      tags: ["Public Speaking", "Choral Speaking", "Debate", "Writing"]
     },
     {
-      title: "Kelab Badminton & Rumah Sukan (Sports & House)",
+      tabLabel: "SUKAN & PERMAINAN",
+      title: "Kelab Badminton & Rumah Sukan (Sports House)",
       category: "sports",
-      categoryName: "Sukan & Permainan",
       role: "School House Athlete (Rumah Sukan)",
       year: "2023 - Present",
-      description: "Represented sports house in annual sports day track events and regular intra-school badminton sparring sessions, building physical endurance and team spirit.",
-      tags: ["Badminton", "Track & Field", "Sportsmanship", "Team Player"],
-      badge: "Athletics"
+      description: "Represented school sports house in annual sports day track events and participated in regular intra-school badminton sparring sessions.",
+      bulletPoints: [
+        "Represented sports house in 4x100m relay & 100m sprint",
+        "Regular doubles sparring in weekly badminton training",
+        "Demonstrated sportsmanship, discipline, and endurance"
+      ],
+      tags: ["Badminton", "Track & Field", "Sportsmanship", "Team Player"]
     },
     {
-      title: "School Gotong-Royong & Eco-Garden Team",
+      tabLabel: "KHIDMAT KOMUNITI",
+      title: "School Gotong-Royong & Eco-Garden Project",
       category: "leadership",
-      categoryName: "Khidmat Komuniti",
-      role: "Student Volunteer",
+      role: "Student Volunteer Leader",
       year: "2024",
-      description: "Collaborated with teachers and peers to plant herbal gardens, install recycling bins, and create informative biological botanical signboards.",
-      tags: ["Eco-friendly", "Volunteer", "Green School", "Teamwork"],
-      badge: "Community"
+      description: "Collaborated with teachers and peers to plant herbal botanical gardens, maintain recycling corners, and design educational botanical signs.",
+      bulletPoints: [
+        "Planted and labeled 20+ species of native medicinal herbs",
+        "Designed graphic informational plant tags using Canva",
+        "Promoted zero-waste awareness among secondary students"
+      ],
+      tags: ["Eco-friendly", "Volunteer", "Green School", "Community"]
     }
   ];
 
@@ -114,136 +133,107 @@ export default function Home() {
 
   const awards = [
     {
-      title: "Anugerah Kecemerlangan Akademik (Academic Excellence)",
-      issuedBy: "Sekolah Menengah Kebangsaan",
+      title: "TOP 5 IN FORM — ANUGERAH KECEMERLANGAN AKADEMIK",
+      subtitle: "Academic Excellence Award",
+      issuedBy: "Sekolah Menengah Kebangsaan (SMK)",
       year: "2024 & 2025",
       type: "Academic",
-      icon: Trophy,
-      color: "from-amber-400 to-amber-500",
-      description: "Awarded for achieving top 5 ranking in Form 1 & Form 2 with straight A grades in core subjects."
+      rating: 5,
+      description: "Recognized as top 5 academic achiever across the entire Form 1 & Form 2 cohort with consistent Band 5/6 (TP5/TP6) marks in Science, Mathematics, and Languages."
     },
     {
-      title: "State STEM Innovation Challenge (Silver Medal)",
+      title: "STATE STEM INNOVATION CHALLENGE — SILVER MEDAL",
+      subtitle: "State-Level STEM Competition",
       issuedBy: "Jabatan Pendidikan Negeri (JPN)",
       year: "2024",
       type: "STEM & Science",
-      icon: Medal,
-      color: "from-rose-400 to-rose-500",
-      description: "Designed a low-cost automated plant watering prototype using recycled materials and basic sensors."
+      rating: 5,
+      description: "Researched, assembled, and demonstrated an eco-friendly domestic water filtration prototype using layered activated charcoal, quartz sand, and river gravel."
     },
     {
-      title: "Inter-Class Public Speaking Competition — 1st Place",
-      issuedBy: "Panitia Bahasa Inggeris",
+      title: "INTER-CLASS ENGLISH PUBLIC SPEAKING — 1ST PLACE CHAMPION",
+      subtitle: "Public Speaking Showcase",
+      issuedBy: "Panitia Bahasa Inggeris SMK",
       year: "2024",
       type: "Language & Arts",
-      icon: Award,
-      color: "from-fuchsia-400 to-rose-400",
-      description: "Delivered a winning 5-minute speech titled 'The Youth of Tomorrow in a Digital World'."
+      rating: 5,
+      description: "Awarded 1st Place for delivering a compelling 5-minute speech titled 'The Youth of Tomorrow in a Digital World', praised for articulation, stage presence, and poise."
     },
     {
-      title: "Sijil Pelantikan Pengawas Sekolah (School Prefect)",
+      title: "WATIKAH PELANTIKAN PENGAWAS SEKOLAH — APPOINTED PREFECT",
+      subtitle: "Official Disciplinary Board Credential",
       issuedBy: "Unit Hal Ehwal Murid (HEM)",
       year: "2024 - 2026",
       type: "Leadership",
-      icon: ShieldCheck,
-      color: "from-pink-400 to-rose-500",
-      description: "Officially commissioned as a school prefect following rigorous leadership screening and teacher recommendations."
+      rating: 5,
+      description: "Formally commissioned into the School Prefects Board following evaluation of academic standing, moral character, and teacher recommendations."
     },
     {
-      title: "Anugerah NILAM (Nadi Ilmu Amalan Membaca) — Gold Level",
+      title: "ANUGERAH NILAM (NADI ILMU AMALAN MEMBACA) — GOLD LEVEL",
+      subtitle: "National Reading Campaign",
       issuedBy: "Pusat Sumber Sekolah",
       year: "2023 - 2024",
       type: "Reading & Research",
-      icon: BookOpen,
-      color: "from-purple-400 to-pink-500",
-      description: "Surpassed 200 reviewed book entries across both Bahasa Melayu and English literature genres."
+      rating: 5,
+      description: "Surpassed 200 thoroughly reviewed book entries in both Bahasa Melayu and English literature, earning the prestigious Gold Reader Badge."
     },
     {
-      title: "Pertandingan Kawad Kaki Pandu Puteri (Best Squad Member)",
-      issuedBy: "Unit Kokurikulum Sekolah",
+      title: "PERBARISAN KAWAD KAKI PANDU PUTERI — BEST SQUAD MEMBER",
+      subtitle: "Annual Uniformed Parade",
+      issuedBy: "Unit Kokurikulum SMK",
       year: "2024",
       type: "Co-Curriculum",
-      icon: Star,
-      color: "from-rose-400 to-amber-400",
-      description: "Commended for precision, posture, and discipline in the annual school uniformed bodies parade."
-    }
-  ];
-
-  const highlights = [
-    {
-      title: "STEM Eco-Water Filtration Model",
-      category: "Science Fair Project",
-      summary: "Collaborative science project demonstrating how natural sedimentary layers filter household greywater for garden use.",
-      skills: ["Scientific Method", "Teamwork", "Prototype Design"]
-    },
-    {
-      title: "English Month Choral Speaking",
-      category: "School Performance",
-      summary: "Contributed script ideas and performed as lead voice in the inter-house choral speaking showcase during English Week.",
-      skills: ["Vocal Projection", "Memorization", "Public Performance"]
-    },
-    {
-      title: "School Prefects Leadership Camp",
-      category: "Leadership Development",
-      summary: "3-day intensive camp on problem solving, crowd control, conflict resolution, and peer empathy conducted by school counsellors.",
-      skills: ["Leadership", "Crisis Management", "Communication"]
-    },
-    {
-      title: "Classroom Interactive Bulletin Board",
-      category: "Creative & Arts",
-      summary: "Designed and updated monthly educational charts, motivational quotes, and study tips for classmates using Canva graphics.",
-      skills: ["Canva", "Visual Layout", "Organization"]
+      rating: 5,
+      description: "Commended by uniformed body advisors for precision timing, uniform cleanliness, drill discipline, and leadership during the inter-unit marching parade."
     }
   ];
 
   return (
-    <div className="min-h-screen bg-[#fff8fa] text-[#2d1822] font-sans selection:bg-[#e07a97] selection:text-white">
-      {/* Top Banner Notice */}
-      <div className="bg-gradient-to-r from-rose-400 via-pink-400 to-rose-400 text-white text-xs font-semibold py-2 px-4 text-center tracking-wide shadow-sm flex items-center justify-center gap-2">
-        <Sparkles className="w-3.5 h-3.5 animate-pulse" />
-        <span>Hana Delisha binti Nazri • Form 3 Secondary Student Portfolio • Tingkatan 3</span>
-        <Sparkles className="w-3.5 h-3.5 animate-pulse" />
+    <div className="min-h-screen bg-[#3d121e] text-[#f5eee6] font-sans selection:bg-[#dfb0ba] selection:text-[#3d121e]">
+      {/* Top Announcement Bar */}
+      <div className="bg-[#2d0a15] text-[#dfb0ba] text-[11px] font-bold tracking-[0.2em] uppercase py-2 px-4 text-center border-b border-[#4d1827] flex items-center justify-center gap-2">
+        <Sparkles className="w-3.5 h-3.5 text-[#dfb0ba]" />
+        <span>HANA DELISHA BINTI NAZRI • SECONDARY SCHOOL PORTFOLIO • TINGKATAN 3 • AGE 15</span>
+        <Sparkles className="w-3.5 h-3.5 text-[#dfb0ba]" />
       </div>
 
-      {/* Navigation Header */}
-      <header className="sticky top-0 z-50 backdrop-blur-md bg-white/85 border-b border-rose-100/80 shadow-xs">
+      {/* Main Navigation (Deep Burgundy style) */}
+      <header className="sticky top-0 z-50 backdrop-blur-md bg-[#3d121e]/90 border-b border-[#521c2b]">
         <div className="max-w-6xl mx-auto px-6 h-18 flex items-center justify-between">
           <a href="#" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-rose-400 to-pink-500 flex items-center justify-center font-bold text-white shadow-md shadow-rose-300/30 group-hover:scale-105 transition-transform">
-              <span className="font-script text-2xl pt-1">H</span>
-            </div>
             <div className="flex flex-col">
-              <span className="font-script text-rose-500 text-2xl leading-none font-bold">Hana</span>
-              <span className="font-bold text-xs tracking-[0.2em] text-slate-700 uppercase -mt-0.5">
-                DELISHA<span className="text-rose-500">.</span>
+              <span className="font-black text-lg tracking-wider text-[#f5eee6] uppercase">
+                HANA DELISHA<span className="text-[#dfb0ba]">.</span>
+              </span>
+              <span className="text-[10px] font-bold tracking-[0.2em] text-[#dfb0ba] uppercase -mt-1">
+                STUDENT PORTFOLIO
               </span>
             </div>
           </a>
 
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-7 text-xs font-semibold tracking-wider text-slate-600 uppercase">
-            <a href="#about" className="hover:text-rose-500 transition-colors">About Me</a>
-            <a href="#education" className="hover:text-rose-500 transition-colors">Education</a>
-            <a href="#activities" className="hover:text-rose-500 transition-colors">Activities</a>
-            <a href="#achievements" className="hover:text-rose-500 transition-colors">Achievements</a>
-            <a href="#highlights" className="hover:text-rose-500 transition-colors">Highlights</a>
-            <a href="#skills" className="hover:text-rose-500 transition-colors">Skills</a>
-            <a href="#contact" className="hover:text-rose-500 transition-colors">Contact</a>
+          {/* Desktop Nav Links */}
+          <nav className="hidden md:flex items-center gap-7 text-[11px] font-extrabold tracking-[0.2em] text-[#dfb0ba] uppercase">
+            <a href="#about" className="hover:text-white transition-colors">ABOUT</a>
+            <a href="#education" className="hover:text-white transition-colors">EDUCATION</a>
+            <a href="#activities" className="hover:text-white transition-colors">KOKURIKULUM</a>
+            <a href="#achievements" className="hover:text-white transition-colors">ACHIEVEMENTS</a>
+            <a href="#skills" className="hover:text-white transition-colors">SKILLS</a>
+            <a href="#contact" className="hover:text-white transition-colors">CONTACT</a>
           </nav>
 
           <div className="hidden md:flex items-center gap-3">
             <a
               href="#contact"
-              className="px-5 py-2.5 text-xs font-bold rounded-full bg-rose-500 hover:bg-rose-600 text-white transition-all shadow-md shadow-rose-300/40 uppercase tracking-wider"
+              className="px-6 py-2.5 text-xs font-black rounded-full bg-[#dfb0ba] hover:bg-white text-[#3d121e] transition-all shadow-md uppercase tracking-wider"
             >
-              Get In Touch
+              GET IN TOUCH
             </a>
           </div>
 
-          {/* Mobile menu button */}
+          {/* Mobile Menu Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 rounded-xl text-rose-600 hover:bg-rose-50 transition-colors"
+            className="md:hidden p-2 rounded-lg text-[#dfb0ba] hover:bg-[#4d1827]"
             aria-label="Toggle navigation"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -252,119 +242,116 @@ export default function Home() {
 
         {/* Mobile Dropdown */}
         {mobileMenuOpen && (
-          <div className="md:hidden border-b border-rose-100 bg-white/95 backdrop-blur-md px-6 py-4 flex flex-col gap-3 text-sm font-semibold text-slate-700">
-            <a href="#about" onClick={() => setMobileMenuOpen(false)} className="hover:text-rose-500 py-1">About Me</a>
-            <a href="#education" onClick={() => setMobileMenuOpen(false)} className="hover:text-rose-500 py-1">Education Background</a>
-            <a href="#activities" onClick={() => setMobileMenuOpen(false)} className="hover:text-rose-500 py-1">School Activities (Kokurikulum)</a>
-            <a href="#achievements" onClick={() => setMobileMenuOpen(false)} className="hover:text-rose-500 py-1">Achievements & Awards</a>
-            <a href="#highlights" onClick={() => setMobileMenuOpen(false)} className="hover:text-rose-500 py-1">Project Highlights</a>
-            <a href="#skills" onClick={() => setMobileMenuOpen(false)} className="hover:text-rose-500 py-1">Skills & Talents</a>
-            <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="hover:text-rose-500 py-1">Contact</a>
+          <div className="md:hidden bg-[#2d0a15] border-b border-[#521c2b] px-6 py-4 flex flex-col gap-3 text-xs font-bold tracking-widest uppercase text-[#dfb0ba]">
+            <a href="#about" onClick={() => setMobileMenuOpen(false)} className="hover:text-white py-1">ABOUT</a>
+            <a href="#education" onClick={() => setMobileMenuOpen(false)} className="hover:text-white py-1">EDUCATION</a>
+            <a href="#activities" onClick={() => setMobileMenuOpen(false)} className="hover:text-white py-1">KOKURIKULUM</a>
+            <a href="#achievements" onClick={() => setMobileMenuOpen(false)} className="hover:text-white py-1">ACHIEVEMENTS</a>
+            <a href="#skills" onClick={() => setMobileMenuOpen(false)} className="hover:text-white py-1">SKILLS</a>
+            <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="hover:text-white py-1">CONTACT</a>
           </div>
         )}
       </header>
 
-      {/* HERO SECTION (Styled after Riley Belmont UGC slide 1) */}
-      <section className="relative pt-12 pb-20 md:pt-20 md:pb-28 overflow-hidden">
-        {/* Soft pink ambient background shapes */}
-        <div className="absolute top-10 right-10 w-96 h-96 bg-rose-200/40 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-10 left-10 w-80 h-80 bg-pink-200/30 rounded-full blur-2xl pointer-events-none" />
+      {/* HERO SECTION (Directly mimicking "TURN UP the HEAT." & "OUR CLASSES") */}
+      <section className="relative pt-16 pb-24 md:pt-24 md:pb-32 overflow-hidden bg-[#3d121e]">
+        {/* Soft atmospheric gradients */}
+        <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#5a1c2d] rounded-full blur-[140px] pointer-events-none opacity-50" />
+        <div className="absolute bottom-0 left-10 w-80 h-80 bg-[#2d0a15] rounded-full blur-[100px] pointer-events-none" />
 
         <div className="max-w-6xl mx-auto px-6 relative">
           <div className="grid lg:grid-cols-12 gap-12 items-center">
             
-            {/* Left Column: Hero Text */}
+            {/* Left Column: Big Bold Typography */}
             <div className="lg:col-span-7">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-rose-100 text-rose-700 text-xs font-bold tracking-wider uppercase mb-5 border border-rose-200">
-                <Sparkles className="w-3.5 h-3.5 text-rose-500" />
-                Secondary School Student Portfolio
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#4d1827] text-[#dfb0ba] text-[11px] font-extrabold tracking-[0.25em] uppercase mb-6 border border-[#662034]">
+                <span className="w-2 h-2 rounded-full bg-[#dfb0ba] animate-pulse" />
+                FORM 3 SECONDARY STUDENT • AGE 15
               </div>
 
-              {/* Editorial Name Title mimicking the reference slide */}
-              <div className="mb-4">
-                <span className="font-script text-rose-500 text-6xl sm:text-7xl md:text-8xl font-bold block drop-shadow-xs">
-                  Hana
-                </span>
-                <h1 className="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight text-slate-800 uppercase mt-[-10px] sm:mt-[-16px]">
-                  DELISHA
+              {/* Giant mixed serif/sans headline */}
+              <div className="mb-6">
+                <h1 className="text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-tight text-[#f5eee6] leading-[0.95]">
+                  STUDENT.
+                  <br />
+                  LEADER.
+                  <br />
+                  <span className="font-serif-italic font-normal text-[#dfb0ba] lowercase text-5xl sm:text-7xl md:text-8xl tracking-normal">
+                    and
+                  </span>{" "}
+                  ACHIEVER.
                 </h1>
-                <p className="text-xs sm:text-sm font-bold tracking-[0.25em] text-rose-600 uppercase mt-2">
-                  BINTI NAZRI • 15 YEARS OLD • FORM 3
+                <p className="text-sm font-extrabold tracking-[0.3em] text-[#dfb0ba] uppercase mt-4">
+                  HANA DELISHA BINTI NAZRI
                 </p>
               </div>
 
-              <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-xl mb-8">
+              <p className="text-sm sm:text-base text-[#e5d8cf] leading-relaxed max-w-xl mb-8 font-medium">
                 Welcome to my student portfolio! I am a passionate Form 3 secondary school student
-                striving for academic excellence, active leadership in the Prefects Board, and enthusiastic participation in STEM innovation and co-curricular pursuits.
+                striving for academic excellence, active leadership on the School Prefects Board,
+                and enthusiastic participation in STEM innovation and co-curricular programs.
               </p>
 
               {/* Action Buttons */}
-              <div className="flex flex-wrap items-center gap-3 mb-10">
+              <div className="flex flex-wrap items-center gap-4 mb-12">
                 <a
                   href="#activities"
-                  className="px-6 py-3 rounded-full bg-rose-500 hover:bg-rose-600 text-white font-bold text-xs uppercase tracking-wider transition-all shadow-md shadow-rose-300/40 inline-flex items-center gap-2"
+                  className="px-8 py-3.5 rounded-full bg-[#dfb0ba] hover:bg-white text-[#3d121e] font-black text-xs uppercase tracking-widest transition-all shadow-md inline-flex items-center gap-2"
                 >
-                  School Activities <ChevronRight className="w-4 h-4" />
+                  EXPLORE ACTIVITIES <ArrowRight className="w-4 h-4" />
                 </a>
                 <a
                   href="#education"
-                  className="px-6 py-3 rounded-full bg-white hover:bg-rose-50 text-rose-700 font-bold text-xs uppercase tracking-wider border border-rose-200 transition-colors shadow-xs inline-flex items-center gap-2"
+                  className="px-8 py-3.5 rounded-full bg-transparent hover:bg-[#dfb0ba] hover:text-[#3d121e] text-[#dfb0ba] font-black text-xs uppercase tracking-widest border-2 border-[#dfb0ba] transition-all inline-flex items-center gap-2"
                 >
-                  Education Journey
-                </a>
-                <a
-                  href="#contact"
-                  className="px-6 py-3 rounded-full bg-rose-50 hover:bg-rose-100 text-rose-700 font-bold text-xs uppercase tracking-wider transition-colors inline-flex items-center gap-2"
-                >
-                  <Mail className="w-4 h-4 text-rose-500" /> Let&apos;s Connect
+                  ACADEMIC MERIT
                 </a>
               </div>
 
               {/* Quick Secondary School Stats */}
-              <div className="grid grid-cols-3 gap-3 sm:gap-4 pt-6 border-t border-rose-100">
-                <div className="p-3.5 rounded-2xl bg-white border border-rose-100 shadow-xs">
-                  <p className="text-2xl sm:text-3xl font-extrabold text-rose-500">15</p>
-                  <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mt-0.5">Years Old</p>
+              <div className="grid grid-cols-3 gap-3 pt-6 border-t border-[#521c2b]">
+                <div className="p-4 rounded-2xl bg-[#4a1827] border border-[#5e2032]">
+                  <p className="text-2xl sm:text-3xl font-black text-[#dfb0ba]">15</p>
+                  <p className="text-[10px] font-extrabold text-[#e5d8cf] uppercase tracking-wider mt-0.5">Years Old</p>
                 </div>
-                <div className="p-3.5 rounded-2xl bg-white border border-rose-100 shadow-xs">
-                  <p className="text-2xl sm:text-3xl font-extrabold text-slate-800">Form 3</p>
-                  <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mt-0.5">Tingkatan 3</p>
+                <div className="p-4 rounded-2xl bg-[#4a1827] border border-[#5e2032]">
+                  <p className="text-2xl sm:text-3xl font-black text-white">Form 3</p>
+                  <p className="text-[10px] font-extrabold text-[#e5d8cf] uppercase tracking-wider mt-0.5">Tingkatan 3</p>
                 </div>
-                <div className="p-3.5 rounded-2xl bg-white border border-rose-100 shadow-xs">
-                  <p className="text-2xl sm:text-3xl font-extrabold text-rose-400">Top 5</p>
-                  <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider mt-0.5">Class Rank</p>
+                <div className="p-4 rounded-2xl bg-[#4a1827] border border-[#5e2032]">
+                  <p className="text-2xl sm:text-3xl font-black text-[#dfb0ba]">Top 5</p>
+                  <p className="text-[10px] font-extrabold text-[#e5d8cf] uppercase tracking-wider mt-0.5">Class Rank</p>
                 </div>
               </div>
             </div>
 
-            {/* Right Column: Photo Frame with Offset Pink Backdrop (Directly replicating reference visual) */}
+            {/* Right Column: Framed Editorial Photo Box */}
             <div className="lg:col-span-5 flex justify-center">
               <div className="relative w-72 sm:w-80 md:w-88">
-                {/* Offset Pink Backdrop Rectangle */}
-                <div className="absolute top-4 -right-4 w-full h-full rounded-3xl bg-rose-300/70 -z-10 transform translate-x-2 translate-y-2" />
-                <div className="absolute -top-3 -left-3 w-20 h-20 bg-pink-100 rounded-full -z-10" />
+                {/* Offset warm cream background card */}
+                <div className="absolute top-4 -right-4 w-full h-full rounded-3xl bg-[#f5eee6] -z-10 transform translate-x-2 translate-y-2 opacity-95" />
+                <div className="absolute -top-3 -left-3 w-16 h-16 bg-[#dfb0ba]/30 rounded-full -z-10" />
 
-                {/* Main Card Frame */}
-                <div className="relative rounded-3xl overflow-hidden bg-white p-3 shadow-lg border border-rose-100">
-                  <div className="relative w-full h-[410px] rounded-2xl overflow-hidden bg-rose-50 flex items-center justify-center">
-                    {/* Stylized student avatar image */}
+                {/* Foreground Card */}
+                <div className="relative rounded-3xl overflow-hidden bg-[#4a1827] p-3 shadow-2xl border border-[#662034]">
+                  <div className="relative w-full h-[410px] rounded-2xl overflow-hidden bg-[#2d0a15] flex items-center justify-center">
                     <img
                       src="/student-avatar.svg"
-                      alt="Hana Delisha binti Nazri - Secondary School Student"
+                      alt="Hana Delisha binti Nazri"
                       className="w-full h-full object-cover"
                     />
                   </div>
 
-                  {/* Floating Badge 1: Prefect */}
-                  <div className="absolute top-7 left-6 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-xs border border-rose-100 shadow-md flex items-center gap-1.5 text-xs font-bold text-slate-800">
-                    <ShieldCheck className="w-4 h-4 text-amber-500" />
-                    <span>School Prefect</span>
+                  {/* Top floating badge */}
+                  <div className="absolute top-6 left-6 px-3.5 py-1.5 rounded-full bg-[#3d121e]/95 backdrop-blur-md border border-[#dfb0ba]/40 text-[#dfb0ba] text-[11px] font-black uppercase tracking-wider flex items-center gap-1.5 shadow-lg">
+                    <ShieldCheck className="w-3.5 h-3.5 text-[#dfb0ba]" />
+                    <span>SCHOOL PREFECT</span>
                   </div>
 
-                  {/* Floating Badge 2: STEM Secretary */}
-                  <div className="absolute bottom-8 right-6 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-xs border border-rose-100 shadow-md flex items-center gap-1.5 text-xs font-bold text-slate-800">
-                    <Trophy className="w-4 h-4 text-rose-500" />
-                    <span>STEM Innovator</span>
+                  {/* Bottom floating badge */}
+                  <div className="absolute bottom-6 right-6 px-3.5 py-1.5 rounded-full bg-[#f5eee6] text-[#3d121e] text-[11px] font-black uppercase tracking-wider flex items-center gap-1.5 shadow-lg">
+                    <Trophy className="w-3.5 h-3.5 text-[#3d121e]" />
+                    <span>PAJSK GRADE A</span>
                   </div>
                 </div>
               </div>
@@ -374,255 +361,168 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ABOUT ME SECTION (Inspired by Slide 2: Pink card with rounded corners & clean text) */}
-      <section id="about" className="py-20 border-t border-rose-100/80 bg-white/50">
+      {/* TYPOGRAPHIC MARQUEE (Matching "✦ . OUR HEAT \") */}
+      <div className="bg-[#2d0a15] py-4 border-y border-[#521c2b] overflow-hidden whitespace-nowrap">
+        <div className="animate-marquee text-xs sm:text-sm font-black tracking-[0.3em] uppercase text-[#dfb0ba]">
+          <span className="mx-6">✦ ACADEMIC EXCELLENCE \</span>
+          <span className="mx-6">✦ LEMBAGA PENGAWAS SEKOLAH \</span>
+          <span className="mx-6">✦ PANDU PUTERI REMAJA \</span>
+          <span className="mx-6">✦ STEM & INNOVATION CLUB \</span>
+          <span className="mx-6">✦ CHORAL SPEAKING \</span>
+          <span className="mx-6">✦ BADMINTON & SPORTS \</span>
+          <span className="mx-6">✦ NILAM GOLD READER \</span>
+          <span className="mx-6">✦ ACADEMIC EXCELLENCE \</span>
+          <span className="mx-6">✦ LEMBAGA PENGAWAS SEKOLAH \</span>
+          <span className="mx-6">✦ PANDU PUTERI REMAJA \</span>
+          <span className="mx-6">✦ STEM & INNOVATION CLUB \</span>
+        </div>
+      </div>
+
+      {/* ABOUT ME SECTION (Matching "FIND YOUR FIRE" & "BUILT for WOMEN") */}
+      <section id="about" className="py-20 md:py-28 bg-[#3d121e] border-b border-[#521c2b]">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="rounded-3xl bg-gradient-to-br from-[#eb8ca5] via-[#df7592] to-[#d66584] text-white p-8 sm:p-12 md:p-16 shadow-lg shadow-rose-300/30 relative overflow-hidden">
-            {/* Background decorative circles */}
-            <div className="absolute -top-16 -right-16 w-64 h-64 bg-white/10 rounded-full pointer-events-none" />
-            <div className="absolute -bottom-12 -left-12 w-48 h-48 bg-white/10 rounded-full pointer-events-none" />
+          <div className="grid lg:grid-cols-12 gap-12 items-center">
+            
+            {/* Left Column: Editorial Bio */}
+            <div className="lg:col-span-7">
+              <span className="text-xs font-black tracking-[0.25em] text-[#dfb0ba] uppercase block mb-2">
+                MEET HANA DELISHA
+              </span>
+              <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-[#f5eee6] mb-6 leading-tight">
+                FIND YOUR{" "}
+                <span className="font-serif-italic font-normal text-[#dfb0ba] lowercase text-4xl sm:text-6xl">
+                  spark.
+                </span>
+                <br />
+                LEAD WITH PURPOSE.
+              </h2>
 
-            <div className="grid lg:grid-cols-12 gap-10 items-center relative z-10">
-              
-              {/* Text side */}
-              <div className="lg:col-span-7">
-                <span className="font-script text-white/90 text-3xl sm:text-4xl block mb-1">Get to know me</span>
-                <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-wider text-white mb-6">
-                  ABOUT ME
-                </h2>
-
-                <div className="space-y-4 text-white/95 text-sm sm:text-base leading-relaxed font-normal">
-                  <p>
-                    Hello and warm greetings! I am <strong className="font-bold underline decoration-white/50 underline-offset-4">Hana Delisha binti Nazri</strong>, a 15-year-old student currently in <strong>Form 3 (Tingkatan 3)</strong> in secondary school.
-                  </p>
-                  <p>
-                    As a secondary school student, I believe in nurturing both intellectual curiosity and character. I maintain high academic standards while serving with pride as a <strong>School Prefect (Pengawas Sekolah)</strong>, representing my school in STEM challenges, and engaging actively in uniformed bodies and clubs.
-                  </p>
-                  <p>
-                    My favorite subjects include <strong>Science, Mathematics, and English</strong>. When not studying for assessments, I enjoy reading literature, designing digital presentations in Canva, playing badminton, and exploring science experiments.
-                  </p>
-                </div>
-
-                {/* Key Student Traits */}
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mt-8">
-                  <div className="p-3 rounded-2xl bg-white/15 backdrop-blur-xs border border-white/20">
-                    <Heart className="w-5 h-5 text-white mb-1" />
-                    <p className="font-bold text-xs uppercase tracking-wider text-white">Dedicated</p>
-                    <p className="text-[11px] text-white/80">Consistent Learner</p>
-                  </div>
-                  <div className="p-3 rounded-2xl bg-white/15 backdrop-blur-xs border border-white/20">
-                    <Users className="w-5 h-5 text-white mb-1" />
-                    <p className="font-bold text-xs uppercase tracking-wider text-white">Leader</p>
-                    <p className="text-[11px] text-white/80">School Prefect</p>
-                  </div>
-                  <div className="p-3 rounded-2xl bg-white/15 backdrop-blur-xs border border-white/20 col-span-2 sm:col-span-1">
-                    <Sparkles className="w-5 h-5 text-white mb-1" />
-                    <p className="font-bold text-xs uppercase tracking-wider text-white">Creative</p>
-                    <p className="text-[11px] text-white/80">Design & STEM</p>
-                  </div>
-                </div>
+              <div className="space-y-4 text-sm sm:text-base text-[#e5d8cf] leading-relaxed font-medium">
+                <p>
+                  Assalamualaikum & Hello! I am <strong className="text-white font-black">Hana Delisha binti Nazri</strong>, a 15-year-old student currently in <strong>Form 3 (Tingkatan 3)</strong> in secondary school.
+                </p>
+                <p>
+                  As a secondary school student, I believe that true success stems from a harmonious balance between disciplined academic diligence and purposeful extracurricular leadership. Serving as a <strong>School Prefect (Pengawas Sekolah)</strong> has shaped my communication, accountability, and empathy when guiding peers.
+                </p>
+                <p>
+                  My core interests center around <strong>STEM disciplines, Language Arts, and Creative Presentation</strong>. I love turning concepts into tangible prototypes—from science fair greywater models to engaging digital infographics.
+                </p>
               </div>
 
-              {/* Student Profile Quick Info Card */}
-              <div className="lg:col-span-5">
-                <div className="rounded-2xl bg-white text-slate-800 p-6 sm:p-8 shadow-md border border-rose-100">
-                  <h3 className="font-black text-sm uppercase tracking-wider text-rose-600 mb-4 flex items-center gap-2">
-                    <GraduationCap className="w-4 h-4 text-rose-500" />
-                    Student Profile Card
-                  </h3>
-
-                  <div className="space-y-3.5 text-xs divide-y divide-rose-50">
-                    <div className="pt-2 flex justify-between items-center">
-                      <span className="font-semibold text-slate-500 uppercase tracking-wide">Full Name</span>
-                      <span className="font-bold text-slate-800 text-right">Hana Delisha binti Nazri</span>
-                    </div>
-
-                    <div className="pt-2 flex justify-between items-center">
-                      <span className="font-semibold text-slate-500 uppercase tracking-wide">Age</span>
-                      <span className="font-bold text-slate-800">15 Years Old</span>
-                    </div>
-
-                    <div className="pt-2 flex justify-between items-center">
-                      <span className="font-semibold text-slate-500 uppercase tracking-wide">Current Level</span>
-                      <span className="font-bold text-rose-600">Form 3 (Tingkatan 3)</span>
-                    </div>
-
-                    <div className="pt-2 flex justify-between items-center">
-                      <span className="font-semibold text-slate-500 uppercase tracking-wide">School Roles</span>
-                      <span className="font-bold text-slate-800 text-right">School Prefect • Club Secretary</span>
-                    </div>
-
-                    <div className="pt-2 flex justify-between items-center">
-                      <span className="font-semibold text-slate-500 uppercase tracking-wide">Uniform Body</span>
-                      <span className="font-bold text-slate-800">Pandu Puteri Remaja</span>
-                    </div>
-
-                    <div className="pt-2 flex justify-between items-center">
-                      <span className="font-semibold text-slate-500 uppercase tracking-wide">Languages</span>
-                      <span className="font-bold text-slate-800 text-right">Bahasa Melayu & English</span>
-                    </div>
-
-                    <div className="pt-2 flex justify-between items-center">
-                      <span className="font-semibold text-slate-500 uppercase tracking-wide">Future Goal</span>
-                      <span className="font-bold text-slate-800 text-right">Pure Science / STEM Stream</span>
-                    </div>
-                  </div>
-
-                  <div className="mt-6 pt-4 border-t border-rose-100 text-center">
-                    <span className="inline-block text-[11px] font-semibold text-rose-600 bg-rose-50 px-3 py-1 rounded-full">
-                      🌱 &ldquo;Striving for excellence with humility and purpose.&rdquo;
-                    </span>
-                  </div>
+              {/* 3 Value Pillars */}
+              <div className="grid grid-cols-3 gap-3 mt-8 pt-6 border-t border-[#521c2b]">
+                <div className="p-3.5 rounded-2xl bg-[#4a1827] border border-[#5e2032]">
+                  <p className="font-black text-xs uppercase tracking-wider text-[#dfb0ba]">DILIGENCE</p>
+                  <p className="text-[11px] text-[#e5d8cf] mt-1">Consistent Top 5 rank in Form</p>
+                </div>
+                <div className="p-3.5 rounded-2xl bg-[#4a1827] border border-[#5e2032]">
+                  <p className="font-black text-xs uppercase tracking-wider text-[#dfb0ba]">INTEGRITY</p>
+                  <p className="text-[11px] text-[#e5d8cf] mt-1">Prefect assembly moderator</p>
+                </div>
+                <div className="p-3.5 rounded-2xl bg-[#4a1827] border border-[#5e2032]">
+                  <p className="font-black text-xs uppercase tracking-wider text-[#dfb0ba]">INNOVATION</p>
+                  <p className="text-[11px] text-[#e5d8cf] mt-1">State STEM Challenge medalist</p>
                 </div>
               </div>
-
             </div>
+
+            {/* Right Column: Student Snapshot Card in Warm Cream (Matching beige cards in reference) */}
+            <div className="lg:col-span-5">
+              <div className="rounded-3xl bg-[#f5eee6] text-[#3d121e] p-8 shadow-xl border border-[#eadfcb]">
+                <div className="flex items-center justify-between pb-4 mb-4 border-b border-[#eadfcb]">
+                  <span className="font-black text-xs uppercase tracking-widest text-[#3d121e]">
+                    STUDENT DOSSIER
+                  </span>
+                  <span className="text-[10px] font-bold px-3 py-1 rounded-full bg-[#dfb0ba] text-[#3d121e] uppercase tracking-wider">
+                    VERIFIED
+                  </span>
+                </div>
+
+                <div className="space-y-3.5 text-xs">
+                  <div className="flex justify-between items-center py-1 border-b border-[#eadfcb]/60">
+                    <span className="font-bold text-[#6e3d4c] uppercase tracking-wider">Full Name</span>
+                    <span className="font-black text-[#3d121e] text-right">Hana Delisha binti Nazri</span>
+                  </div>
+
+                  <div className="flex justify-between items-center py-1 border-b border-[#eadfcb]/60">
+                    <span className="font-bold text-[#6e3d4c] uppercase tracking-wider">Age</span>
+                    <span className="font-black text-[#3d121e]">15 Years Old</span>
+                  </div>
+
+                  <div className="flex justify-between items-center py-1 border-b border-[#eadfcb]/60">
+                    <span className="font-bold text-[#6e3d4c] uppercase tracking-wider">Current Level</span>
+                    <span className="font-black text-[#3d121e]">Form 3 (Tingkatan 3)</span>
+                  </div>
+
+                  <div className="flex justify-between items-center py-1 border-b border-[#eadfcb]/60">
+                    <span className="font-bold text-[#6e3d4c] uppercase tracking-wider">School Leadership</span>
+                    <span className="font-black text-[#3d121e] text-right">School Prefect • STEM Secretary</span>
+                  </div>
+
+                  <div className="flex justify-between items-center py-1 border-b border-[#eadfcb]/60">
+                    <span className="font-bold text-[#6e3d4c] uppercase tracking-wider">Uniform Body</span>
+                    <span className="font-black text-[#3d121e]">Pandu Puteri Remaja</span>
+                  </div>
+
+                  <div className="flex justify-between items-center py-1 border-b border-[#eadfcb]/60">
+                    <span className="font-bold text-[#6e3d4c] uppercase tracking-wider">Languages</span>
+                    <span className="font-black text-[#3d121e]">Bahasa Melayu & English</span>
+                  </div>
+
+                  <div className="flex justify-between items-center py-1">
+                    <span className="font-bold text-[#6e3d4c] uppercase tracking-wider">Aspiration</span>
+                    <span className="font-black text-[#3d121e]">Pure Science / STEM Stream</span>
+                  </div>
+                </div>
+
+                <div className="mt-6 pt-4 border-t border-[#eadfcb] text-center">
+                  <p className="text-[11px] font-bold text-[#3d121e] italic">
+                    &ldquo;Excellence is not an accident—it is the result of continuous effort, character, and curiosity.&rdquo;
+                  </p>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
 
-      {/* EDUCATION BACKGROUND SECTION */}
-      <section id="education" className="py-20 border-t border-rose-100/80">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center max-w-2xl mx-auto mb-14">
-            <span className="font-script text-rose-500 text-3xl font-bold">Academic Journey</span>
-            <h2 className="text-3xl sm:text-4xl font-black uppercase tracking-wider text-slate-800 mt-1">
-              EDUCATION BACKGROUND
-            </h2>
-            <p className="text-sm text-slate-600 mt-2">
-              My educational foundation from primary school to ongoing secondary school achievements.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {/* Secondary School Card */}
-            <div className="p-8 rounded-3xl bg-white border border-rose-100 shadow-sm hover:shadow-md transition-shadow relative">
-              <div className="w-12 h-12 rounded-2xl bg-rose-100 text-rose-600 flex items-center justify-center mb-6">
-                <GraduationCap className="w-6 h-6" />
-              </div>
-              <span className="px-3 py-1 rounded-full bg-rose-500 text-white text-[11px] font-bold tracking-wider uppercase">
-                Current School
-              </span>
-              <h3 className="text-xl font-bold text-slate-800 mt-4">Sekolah Menengah Kebangsaan (SMK)</h3>
-              <p className="text-xs font-semibold text-rose-600 uppercase tracking-wider mt-1">
-                2024 - Present • Form 1, Form 2 & Form 3 (Current)
-              </p>
-              
-              <ul className="mt-5 space-y-2.5 text-xs text-slate-600">
-                <li className="flex items-start gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-rose-500 shrink-0 mt-0.5" />
-                  <span><strong>Top 5 in Form</strong> — Consistently maintaining Band 5 & 6 (TP5/TP6) in Ujian Akhir Sesi Akademik (UASA).</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-rose-500 shrink-0 mt-0.5" />
-                  <span><strong>Anugerah Kecemerlangan Akademik</strong> recipient for overall top academic performer in Tingkatan 1 & 2.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-rose-500 shrink-0 mt-0.5" />
-                  <span><strong>Appointed School Prefect</strong> — Serving in student discipline, assembly leadership, and school event moderation.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-rose-500 shrink-0 mt-0.5" />
-                  <span>Preparing for upper secondary <strong>Pure Science / STEM Stream</strong> (Biology, Chemistry, Physics, Add Maths).</span>
-                </li>
-              </ul>
-            </div>
-
-            {/* Primary School Card */}
-            <div className="p-8 rounded-3xl bg-white border border-rose-100 shadow-sm hover:shadow-md transition-shadow relative">
-              <div className="w-12 h-12 rounded-2xl bg-pink-100 text-pink-600 flex items-center justify-center mb-6">
-                <BookOpen className="w-6 h-6" />
-              </div>
-              <span className="px-3 py-1 rounded-full bg-slate-200 text-slate-700 text-[11px] font-bold tracking-wider uppercase">
-                Primary Foundation
-              </span>
-              <h3 className="text-xl font-bold text-slate-800 mt-4">Sekolah Kebangsaan (SK)</h3>
-              <p className="text-xs font-semibold text-pink-600 uppercase tracking-wider mt-1">
-                2018 - 2023 • Standard 1 to Standard 6 (Tahun 1 - 6)
-              </p>
-              
-              <ul className="mt-5 space-y-2.5 text-xs text-slate-600">
-                <li className="flex items-start gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-pink-500 shrink-0 mt-0.5" />
-                  <span><strong>Pentaksiran Bilik Darjah (PBD)</strong> — Achieved Tahap Penguasaan 6 (TP6) overall grade in final year.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-pink-500 shrink-0 mt-0.5" />
-                  <span><strong>Ketua Darjah (Class Monitor)</strong> & Library Prefect (Pengawas Pusat Sumber).</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-pink-500 shrink-0 mt-0.5" />
-                  <span>Represented school in district-level Choral Speaking and Public Speaking competitions.</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <CheckCircle2 className="w-4 h-4 text-pink-500 shrink-0 mt-0.5" />
-                  <span>Active player in school badminton squad and environmental green club.</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          {/* Academic Subject Strengths */}
-          <div className="mt-12 p-8 rounded-3xl bg-rose-50/70 border border-rose-100 max-w-4xl mx-auto">
-            <h3 className="text-xs font-bold uppercase tracking-wider text-rose-600 mb-6 text-center">
-              Core Academic Focus & Subject Strengths
-            </h3>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
-              <div className="p-4 rounded-2xl bg-white border border-rose-100">
-                <span className="text-2xl font-bold text-slate-800">🔬 Science</span>
-                <p className="text-xs font-bold text-rose-500 mt-1">TP6 / Grade A</p>
-                <p className="text-[11px] text-slate-500 mt-0.5">Inquiry & Experiments</p>
-              </div>
-              <div className="p-4 rounded-2xl bg-white border border-rose-100">
-                <span className="text-2xl font-bold text-slate-800">📐 Maths</span>
-                <p className="text-xs font-bold text-rose-500 mt-1">TP6 / Grade A</p>
-                <p className="text-[11px] text-slate-500 mt-0.5">Algebra & Problem Solving</p>
-              </div>
-              <div className="p-4 rounded-2xl bg-white border border-rose-100">
-                <span className="text-2xl font-bold text-slate-800">🗣️ English</span>
-                <p className="text-xs font-bold text-rose-500 mt-1">CEFR B2 Level</p>
-                <p className="text-[11px] text-slate-500 mt-0.5">Speech & Literature</p>
-              </div>
-              <div className="p-4 rounded-2xl bg-white border border-rose-100">
-                <span className="text-2xl font-bold text-slate-800">💻 RBT / Tech</span>
-                <p className="text-xs font-bold text-rose-500 mt-1">TP6 / Grade A</p>
-                <p className="text-[11px] text-slate-500 mt-0.5">Design & Technology</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SCHOOL ACTIVITIES & CO-CURRICULUM (KOKURIKULUM) */}
-      <section id="activities" className="py-20 border-t border-rose-100/80 bg-white/60">
+      {/* ACTIVITIES & KOKURIKULUM (Matching Screen 2 in Top Right with signature protruding tab labels!) */}
+      <section id="activities" className="py-20 md:py-28 bg-[#f5eee6] text-[#3d121e]">
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
             <div>
-              <span className="font-script text-rose-500 text-3xl font-bold">School Life & Kokurikulum</span>
-              <h2 className="text-3xl sm:text-4xl font-black uppercase tracking-wider text-slate-800 mt-1">
-                ACTIVITIES & CO-CURRICULAR
+              <span className="text-xs font-black tracking-[0.25em] text-[#872942] uppercase block mb-1">
+                CO-CURRICULAR & LEADERSHIP
+              </span>
+              <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-[#3d121e]">
+                SCHOOL ACTIVITIES{" "}
+                <span className="font-serif-italic font-normal text-[#872942] lowercase text-4xl sm:text-6xl">
+                  &
+                </span>{" "}
+                ROLES
               </h2>
-              <p className="text-sm text-slate-600 mt-1">
-                Active involvement across Uniformed Bodies, Clubs & Societies, Sports, and Leadership.
+              <p className="text-xs sm:text-sm text-[#6e3d4c] font-medium mt-1">
+                Active involvement across Uniformed Bodies, Clubs & Societies, Sports, and School Committees.
               </p>
             </div>
 
-            {/* Filter Tabs */}
+            {/* Filter Pills */}
             <div className="flex flex-wrap gap-2">
               {[
-                { id: "all", label: "All Activities" },
-                { id: "uniform", label: "Uniform Body" },
-                { id: "clubs", label: "Clubs & Societies" },
-                { id: "leadership", label: "Leadership" },
-                { id: "sports", label: "Sports" }
+                { id: "all", label: "ALL" },
+                { id: "uniform", label: "UNIFORM BODY" },
+                { id: "clubs", label: "CLUBS & SOCIETIES" },
+                { id: "leadership", label: "LEADERSHIP" },
+                { id: "sports", label: "SPORTS" }
               ].map((tab) => (
                 <button
                   key={tab.id}
                   onClick={() => setActivityFilter(tab.id)}
-                  className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all cursor-pointer ${
+                  className={`px-4 py-2 rounded-full text-[11px] font-black uppercase tracking-wider transition-all cursor-pointer ${
                     activityFilter === tab.id
-                      ? "bg-rose-500 text-white shadow-sm"
-                      : "bg-white text-slate-600 hover:bg-rose-50 border border-rose-100"
+                      ? "bg-[#3d121e] text-[#f5eee6] shadow-sm"
+                      : "bg-[#e8dacb] text-[#3d121e] hover:bg-[#dfb0ba]"
                   }`}
                 >
                   {tab.label}
@@ -631,37 +531,48 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Activities Cards Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* Cards with protruding tab badge (Directly matching reference screen 2) */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 pt-4">
             {filteredActivities.map((act, index) => (
               <div
                 key={index}
-                className="p-6 rounded-3xl bg-white border border-rose-100/80 shadow-xs hover:shadow-md hover:border-rose-300 transition-all flex flex-col justify-between group"
+                className="relative rounded-3xl bg-[#fbf7f2] border border-[#eadfcb] p-6 shadow-sm hover:shadow-md transition-all flex flex-col justify-between"
               >
+                {/* Protruding tab label at top left of card */}
+                <div className="absolute -top-3.5 left-6 px-3 py-1 rounded-full bg-[#dfb0ba] text-[#3d121e] text-[10px] font-black uppercase tracking-widest shadow-xs">
+                  {act.tabLabel}
+                </div>
+
                 <div>
-                  <div className="flex items-center justify-between gap-2 mb-3">
-                    <span className="text-[11px] font-bold px-3 py-1 rounded-full bg-rose-50 text-rose-600 border border-rose-100 uppercase tracking-wider">
-                      {act.badge}
-                    </span>
-                    <span className="text-xs text-slate-600 font-medium">{act.year}</span>
+                  <div className="flex justify-between items-baseline pt-2 mb-2">
+                    <span className="text-[11px] font-bold text-[#872942] uppercase tracking-wider">{act.year}</span>
                   </div>
 
-                  <h3 className="text-lg font-bold text-slate-800 group-hover:text-rose-600 transition-colors">
+                  <h3 className="text-lg font-black uppercase tracking-tight text-[#3d121e] leading-snug">
                     {act.title}
                   </h3>
-                  
-                  <p className="text-xs font-semibold text-rose-500 uppercase tracking-wide mt-1">
+
+                  <p className="text-xs font-black text-[#872942] uppercase tracking-wider mt-1 mb-3">
                     {act.role}
                   </p>
 
-                  <p className="text-xs text-slate-600 leading-relaxed mt-3">
+                  <p className="text-xs text-[#522a36] leading-relaxed mb-4">
                     {act.description}
                   </p>
+
+                  <ul className="space-y-1.5 text-xs text-[#3d121e] mb-4">
+                    {act.bulletPoints.map((pt, i) => (
+                      <li key={i} className="flex items-start gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#872942] shrink-0 mt-1.5" />
+                        <span className="font-medium text-[11.5px] leading-tight">{pt}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
 
-                <div className="mt-6 pt-4 border-t border-rose-50 flex flex-wrap gap-1.5">
+                <div className="pt-4 border-t border-[#eadfcb] flex flex-wrap gap-1.5">
                   {act.tags.map((tag, i) => (
-                    <span key={i} className="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-rose-50 text-rose-700">
+                    <span key={i} className="text-[10px] font-bold px-2.5 py-0.5 rounded-md bg-[#eee3d4] text-[#3d121e]">
                       #{tag}
                     </span>
                   ))}
@@ -671,126 +582,194 @@ export default function Home() {
           </div>
 
           {/* PAJSK Grade Highlight Box */}
-          <div className="mt-12 p-6 rounded-2xl bg-gradient-to-r from-rose-50 via-pink-50 to-rose-50 border border-rose-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="mt-14 p-6 rounded-3xl bg-[#3d121e] text-[#f5eee6] flex flex-col sm:flex-row items-center justify-between gap-6 shadow-lg">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xl bg-rose-500 text-white flex items-center justify-center font-bold text-xl shadow-xs">
+              <div className="w-14 h-14 rounded-2xl bg-[#dfb0ba] text-[#3d121e] flex items-center justify-center font-black text-2xl shadow-sm">
                 A
               </div>
               <div>
-                <h4 className="font-bold text-sm text-slate-800 uppercase tracking-wide">PAJSK Co-Curricular Assessment</h4>
-                <p className="text-xs text-slate-600">Grade A standing with 100% attendance and high participation points.</p>
+                <h4 className="font-black text-sm uppercase tracking-widest text-[#f5eee6]">PAJSK CO-CURRICULAR ASSESSMENT</h4>
+                <p className="text-xs text-[#dfb0ba] font-medium mt-0.5">Grade A Standing • 100% Attendance • High Merits Across All 3 Pillars</p>
               </div>
             </div>
             <a
               href="#achievements"
-              className="text-xs font-bold text-rose-600 hover:text-rose-700 uppercase tracking-wider inline-flex items-center gap-1"
+              className="px-6 py-2.5 rounded-full bg-[#dfb0ba] hover:bg-white text-[#3d121e] font-black text-xs uppercase tracking-widest transition-all"
             >
-              View Awards & Certificates <ChevronRight className="w-4 h-4" />
+              VIEW AWARDS
             </a>
           </div>
         </div>
       </section>
 
-      {/* AWARDS & ACHIEVEMENTS */}
-      <section id="achievements" className="py-20 border-t border-rose-100/80">
+      {/* EDUCATION BACKGROUND (Matching "NOT SURE WHERE TO START?") */}
+      <section id="education" className="py-20 md:py-28 bg-[#3d121e] border-b border-[#521c2b]">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center max-w-2xl mx-auto mb-14">
-            <span className="font-script text-rose-500 text-3xl font-bold">Honors & Accolades</span>
-            <h2 className="text-3xl sm:text-4xl font-black uppercase tracking-wider text-slate-800 mt-1">
-              AWARDS & ACHIEVEMENTS
+            <span className="text-xs font-black tracking-[0.25em] text-[#dfb0ba] uppercase block mb-1">
+              ACADEMIC MERIT & FOUNDATION
+            </span>
+            <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-[#f5eee6]">
+              EDUCATION{" "}
+              <span className="font-serif-italic font-normal text-[#dfb0ba] lowercase text-4xl sm:text-6xl">
+                journey.
+              </span>
             </h2>
-            <p className="text-sm text-slate-600 mt-2">
-              Recognitions earned through academic excellence, competitions, leadership, and reading endeavors.
+            <p className="text-xs sm:text-sm text-[#e5d8cf] font-medium mt-2">
+              Demonstrating consistent high marks, subject strengths, and preparation for upper secondary Pure Science.
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {awards.map((award, i) => {
-              const Icon = award.icon;
-              return (
-                <div
-                  key={i}
-                  className="p-6 rounded-3xl bg-white border border-rose-100 shadow-xs hover:shadow-md hover:border-rose-200 transition-all flex flex-col justify-between"
-                >
-                  <div>
-                    <div className="flex items-center justify-between mb-4">
-                      <div className={`w-11 h-11 rounded-2xl bg-gradient-to-tr ${award.color} text-white flex items-center justify-center shadow-xs`}>
-                        <Icon className="w-5 h-5" />
-                      </div>
-                      <span className="text-xs font-bold text-slate-600 uppercase tracking-wider">
-                        {award.year}
-                      </span>
-                    </div>
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {/* Secondary School Card */}
+            <div className="p-8 rounded-3xl bg-[#f5eee6] text-[#3d121e] shadow-xl border border-[#eadfcb]">
+              <div className="flex justify-between items-start mb-4">
+                <span className="px-3 py-1 rounded-full bg-[#3d121e] text-[#dfb0ba] text-[10px] font-black tracking-widest uppercase">
+                  CURRENT SCHOOL
+                </span>
+                <span className="text-xs font-bold text-[#872942]">2024 - Present</span>
+              </div>
 
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-rose-500 block mb-1">
-                      {award.type}
-                    </span>
+              <h3 className="text-xl font-black uppercase tracking-tight text-[#3d121e]">
+                Sekolah Menengah Kebangsaan (SMK)
+              </h3>
+              <p className="text-xs font-extrabold text-[#872942] uppercase tracking-wider mt-1 mb-4">
+                Form 1, Form 2 & Form 3 (Current)
+              </p>
 
-                    <h3 className="font-bold text-sm text-slate-800 leading-snug">
-                      {award.title}
-                    </h3>
+              <ul className="space-y-2.5 text-xs text-[#3d121e]">
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-[#872942] shrink-0 mt-0.5" />
+                  <span><strong>Top 5 in Form</strong> — Consistently maintaining Band 5 & 6 (TP5/TP6) in Ujian Akhir Sesi Akademik (UASA).</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-[#872942] shrink-0 mt-0.5" />
+                  <span><strong>Anugerah Kecemerlangan Akademik</strong> recipient for overall top academic performance in Tingkatan 1 & 2.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-[#872942] shrink-0 mt-0.5" />
+                  <span><strong>Appointed School Prefect</strong> — Serving in student discipline, assembly leadership, and school event moderation.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-[#872942] shrink-0 mt-0.5" />
+                  <span>Preparing for upper secondary <strong>Pure Science / STEM Stream</strong> (Biology, Chemistry, Physics, Add Maths).</span>
+                </li>
+              </ul>
+            </div>
 
-                    <p className="text-[11px] font-medium text-slate-500 mt-1">
-                      Issued by: {award.issuedBy}
-                    </p>
+            {/* Primary School Card */}
+            <div className="p-8 rounded-3xl bg-[#f5eee6] text-[#3d121e] shadow-xl border border-[#eadfcb]">
+              <div className="flex justify-between items-start mb-4">
+                <span className="px-3 py-1 rounded-full bg-[#e8dacb] text-[#3d121e] text-[10px] font-black tracking-widest uppercase">
+                  PRIMARY FOUNDATION
+                </span>
+                <span className="text-xs font-bold text-[#872942]">2018 - 2023</span>
+              </div>
 
-                    <p className="text-xs text-slate-600 leading-relaxed mt-3">
-                      {award.description}
-                    </p>
-                  </div>
+              <h3 className="text-xl font-black uppercase tracking-tight text-[#3d121e]">
+                Sekolah Kebangsaan (SK)
+              </h3>
+              <p className="text-xs font-extrabold text-[#872942] uppercase tracking-wider mt-1 mb-4">
+                Standard 1 to Standard 6 (Tahun 1 - 6)
+              </p>
 
-                  <div className="mt-4 pt-3 border-t border-rose-50 flex items-center justify-between text-[11px] text-rose-600 font-semibold">
-                    <span>Verified School Certificate</span>
-                    <CheckCircle2 className="w-3.5 h-3.5" />
-                  </div>
-                </div>
-              );
-            })}
+              <ul className="space-y-2.5 text-xs text-[#3d121e]">
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-[#872942] shrink-0 mt-0.5" />
+                  <span><strong>Pentaksiran Bilik Darjah (PBD)</strong> — Achieved Tahap Penguasaan 6 (TP6) overall grade in final year.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-[#872942] shrink-0 mt-0.5" />
+                  <span><strong>Ketua Darjah (Class Monitor)</strong> & Library Prefect (Pengawas Pusat Sumber).</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-[#872942] shrink-0 mt-0.5" />
+                  <span>Represented school in district-level Choral Speaking and Public Speaking competitions.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-[#872942] shrink-0 mt-0.5" />
+                  <span>Active player in school badminton squad and environmental green club.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Core Subject Strengths */}
+          <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-4xl mx-auto">
+            <div className="p-4 rounded-2xl bg-[#4a1827] border border-[#5e2032] text-center">
+              <p className="text-xl font-black text-white">🔬 SCIENCE</p>
+              <p className="text-xs font-black text-[#dfb0ba] mt-1">TP6 / Grade A</p>
+              <p className="text-[10px] text-[#e5d8cf] uppercase tracking-wider mt-0.5">Labs & Inquiry</p>
+            </div>
+            <div className="p-4 rounded-2xl bg-[#4a1827] border border-[#5e2032] text-center">
+              <p className="text-xl font-black text-white">📐 MATHS</p>
+              <p className="text-xs font-black text-[#dfb0ba] mt-1">TP6 / Grade A</p>
+              <p className="text-[10px] text-[#e5d8cf] uppercase tracking-wider mt-0.5">Algebra & Logic</p>
+            </div>
+            <div className="p-4 rounded-2xl bg-[#4a1827] border border-[#5e2032] text-center">
+              <p className="text-xl font-black text-white">🗣️ ENGLISH</p>
+              <p className="text-xs font-black text-[#dfb0ba] mt-1">CEFR B2 Level</p>
+              <p className="text-[10px] text-[#e5d8cf] uppercase tracking-wider mt-0.5">Speech & Essay</p>
+            </div>
+            <div className="p-4 rounded-2xl bg-[#4a1827] border border-[#5e2032] text-center">
+              <p className="text-xl font-black text-white">💻 RBT / TECH</p>
+              <p className="text-xs font-black text-[#dfb0ba] mt-1">TP6 / Grade A</p>
+              <p className="text-[10px] text-[#e5d8cf] uppercase tracking-wider mt-0.5">Design & Tech</p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* HIGHLIGHTS & SCHOOL PROJECTS (Inspired by Slide 3 "MY WORK" & Slide 7 "PREVIOUS PROJECTS") */}
-      <section id="highlights" className="py-20 border-t border-rose-100/80 bg-white/50">
+      {/* AWARDS & REVIEWS (Directly mimicking "THE GLOW IS REAL." from bottom-left reference screen) */}
+      <section id="achievements" className="py-20 md:py-28 bg-[#3d121e]">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center max-w-2xl mx-auto mb-14">
-            <span className="font-script text-rose-500 text-3xl font-bold">Featured Experiences</span>
-            <h2 className="text-3xl sm:text-4xl font-black uppercase tracking-wider text-slate-800 mt-1">
-              SCHOOL PROJECT HIGHLIGHTS
+            <span className="text-xs font-black tracking-[0.25em] text-[#dfb0ba] uppercase block mb-1">
+              VERIFIED MERITS & HONORS
+            </span>
+            <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-[#f5eee6]">
+              THE MERIT{" "}
+              <span className="font-serif-italic font-normal text-[#dfb0ba] lowercase text-4xl sm:text-6xl">
+                is
+              </span>{" "}
+              REAL.
             </h2>
-            <p className="text-sm text-slate-600 mt-2">
-              Key hands-on projects, performances, and leadership initiatives undertaken during secondary school.
+            <p className="text-xs sm:text-sm text-[#e5d8cf] font-medium mt-2">
+              Recognitions earned through academic excellence, competitions, leadership, and reading endeavors.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            {highlights.map((proj, idx) => (
+          {/* 6-Card Review/Award Grid (Directly matching 4-box layout in reference) */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {awards.map((award, i) => (
               <div
-                key={idx}
-                className="p-8 rounded-3xl bg-white border border-rose-100 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden"
+                key={i}
+                className="p-6 rounded-3xl bg-[#fbf7f2] text-[#3d121e] border border-[#eadfcb] shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between"
               >
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-xs font-bold uppercase tracking-wider text-rose-600 px-3 py-1 rounded-full bg-rose-50">
-                    {proj.category}
-                  </span>
-                  <span className="text-xs text-slate-600 font-mono">0{idx + 1}</span>
+                <div>
+                  {/* 5 Stars */}
+                  <div className="flex gap-1 text-[#872942] mb-3">
+                    {[...Array(award.rating)].map((_, s) => (
+                      <Star key={s} className="w-3.5 h-3.5 fill-[#872942]" />
+                    ))}
+                  </div>
+
+                  <h3 className="text-sm font-black uppercase tracking-tight text-[#3d121e] leading-snug mb-1">
+                    &ldquo;{award.title}&rdquo;
+                  </h3>
+
+                  <p className="text-[11px] font-bold text-[#872942] uppercase tracking-wider mb-3">
+                    {award.subtitle} • {award.year}
+                  </p>
+
+                  <p className="text-xs text-[#522a36] leading-relaxed">
+                    {award.description}
+                  </p>
                 </div>
 
-                <h3 className="text-xl font-bold text-slate-800 mb-2">
-                  {proj.title}
-                </h3>
-
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-6">
-                  {proj.summary}
-                </p>
-
-                <div className="pt-4 border-t border-rose-50 flex flex-wrap items-center gap-2">
-                  <span className="text-[11px] font-semibold text-slate-600 mr-2">Skills Practiced:</span>
-                  {proj.skills.map((s, i) => (
-                    <span key={i} className="text-xs px-2.5 py-1 rounded-lg bg-rose-100/80 text-rose-800 font-medium">
-                      {s}
-                    </span>
-                  ))}
+                <div className="mt-5 pt-3 border-t border-[#eadfcb] flex items-center justify-between text-[10.5px] font-bold text-[#6e3d4c] uppercase tracking-wider">
+                  <span>{award.issuedBy}</span>
+                  <CheckCircle2 className="w-3.5 h-3.5 text-[#872942]" />
                 </div>
               </div>
             ))}
@@ -798,361 +777,386 @@ export default function Home() {
         </div>
       </section>
 
-      {/* SKILLS & TALENTS (Inspired by Slide 5 "SKILL & EXPERTISE") */}
-      <section id="skills" className="py-20 border-t border-rose-100/80">
+      {/* SKILLS & TALENTS (Matching "OUR MEMBERSHIP" 3-column bento cards) */}
+      <section id="skills" className="py-20 md:py-28 bg-[#f5eee6] text-[#3d121e] border-t border-[#eadfcb]">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="rounded-3xl bg-gradient-to-r from-rose-50 via-pink-50 to-rose-50 border border-rose-200 p-8 sm:p-12 mb-12 text-center max-w-4xl mx-auto">
-            <span className="font-script text-rose-500 text-3xl font-bold">Strengths & Abilities</span>
-            <h2 className="text-3xl sm:text-4xl font-black uppercase tracking-wider text-slate-800 mt-1">
-              SKILLS & TALENTS
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <span className="text-xs font-black tracking-[0.25em] text-[#872942] uppercase block mb-1">
+              CAPABILITIES & TALENTS
+            </span>
+            <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-[#3d121e]">
+              SKILLS{" "}
+              <span className="font-serif-italic font-normal text-[#872942] lowercase text-4xl sm:text-6xl">
+                for
+              </span>{" "}
+              THE FUTURE
             </h2>
-            <p className="text-sm text-slate-600 mt-2 max-w-xl mx-auto">
-              A balanced blend of academic curiosity, interpersonal leadership, digital literacy, and creative expression.
+            <p className="text-xs sm:text-sm text-[#6e3d4c] font-medium mt-2">
+              A balanced blend of academic logic, interpersonal leadership, digital tools, and languages.
             </p>
           </div>
 
+          {/* Bento Cards (Matching "4 CLASSES PER MONTH", "8 CLASSES PER MONTH", "UNLIMITED MEMBERSHIP" cards in reference) */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* Column 1: Academic & Cognitive */}
-            <div className="p-6 rounded-3xl bg-white border border-rose-100 shadow-xs">
-              <div className="w-10 h-10 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center mb-4">
-                <BookOpen className="w-5 h-5" />
+            <div className="p-6 rounded-3xl bg-[#fbf7f2] border border-[#eadfcb] text-center flex flex-col justify-between">
+              <div>
+                <span className="text-[10px] font-black uppercase tracking-widest text-[#872942] px-3 py-1 rounded-full bg-[#dfb0ba] inline-block mb-4">
+                  COGNITIVE
+                </span>
+                <h3 className="font-black text-base uppercase tracking-tight text-[#3d121e] mb-3">
+                  ACADEMIC LOGIC
+                </h3>
+                <ul className="space-y-2 text-xs text-[#522a36] text-left">
+                  <li className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#872942]" />
+                    Mathematical Reasoning
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#872942]" />
+                    Scientific Experiments & Labs
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#872942]" />
+                    Structured Essay Writing
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#872942]" />
+                    Reading & Literature Analysis
+                  </li>
+                </ul>
               </div>
-              <h3 className="font-bold text-sm uppercase tracking-wide text-slate-800 mb-3">Academic Mindset</h3>
-              <ul className="space-y-2 text-xs text-slate-600">
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-rose-400" />
-                  Mathematical Reasoning
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-rose-400" />
-                  Scientific Inquiry & Labs
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-rose-400" />
-                  Essay Writing & Analysis
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-rose-400" />
-                  Rapid Reading & Research
-                </li>
-              </ul>
             </div>
 
-            {/* Column 2: Leadership & Interpersonal */}
-            <div className="p-6 rounded-3xl bg-white border border-rose-100 shadow-xs">
-              <div className="w-10 h-10 rounded-xl bg-pink-100 text-pink-600 flex items-center justify-center mb-4">
-                <Users className="w-5 h-5" />
+            <div className="p-6 rounded-3xl bg-[#3d121e] text-[#f5eee6] border border-[#521c2b] text-center flex flex-col justify-between">
+              <div>
+                <span className="text-[10px] font-black uppercase tracking-widest text-[#3d121e] px-3 py-1 rounded-full bg-[#dfb0ba] inline-block mb-4">
+                  LEADERSHIP
+                </span>
+                <h3 className="font-black text-base uppercase tracking-tight text-white mb-3">
+                  PUBLIC SPEAKING
+                </h3>
+                <ul className="space-y-2 text-xs text-[#e5d8cf] text-left">
+                  <li className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#dfb0ba]" />
+                    Morning Assembly Emcee
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#dfb0ba]" />
+                    Public Speaking & Debate
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#dfb0ba]" />
+                    Prefects Meeting Facilitation
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#dfb0ba]" />
+                    Peer Conflict Resolution
+                  </li>
+                </ul>
               </div>
-              <h3 className="font-bold text-sm uppercase tracking-wide text-slate-800 mb-3">Leadership & Public</h3>
-              <ul className="space-y-2 text-xs text-slate-600">
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-pink-400" />
-                  Public Speaking & Emcee
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-pink-400" />
-                  Assembly Moderation
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-pink-400" />
-                  Team Collaboration
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-pink-400" />
-                  Time Management
-                </li>
-              </ul>
             </div>
 
-            {/* Column 3: Creative & Digital */}
-            <div className="p-6 rounded-3xl bg-white border border-rose-100 shadow-xs">
-              <div className="w-10 h-10 rounded-xl bg-fuchsia-100 text-fuchsia-600 flex items-center justify-center mb-4">
-                <Palette className="w-5 h-5" />
+            <div className="p-6 rounded-3xl bg-[#fbf7f2] border border-[#eadfcb] text-center flex flex-col justify-between">
+              <div>
+                <span className="text-[10px] font-black uppercase tracking-widest text-[#872942] px-3 py-1 rounded-full bg-[#dfb0ba] inline-block mb-4">
+                  CREATIVE
+                </span>
+                <h3 className="font-black text-base uppercase tracking-tight text-[#3d121e] mb-3">
+                  DIGITAL & DESIGN
+                </h3>
+                <ul className="space-y-2 text-xs text-[#522a36] text-left">
+                  <li className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#872942]" />
+                    Canva Slide & Poster Design
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#872942]" />
+                    CapCut Basic Video Editing
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#872942]" />
+                    Intro Coding (HTML & Scratch)
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#872942]" />
+                    Infographic Chart Layouts
+                  </li>
+                </ul>
               </div>
-              <h3 className="font-bold text-sm uppercase tracking-wide text-slate-800 mb-3">Creative & Digital</h3>
-              <ul className="space-y-2 text-xs text-slate-600">
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-fuchsia-400" />
-                  Canva Presentation Design
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-fuchsia-400" />
-                  Infographic & Posters
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-fuchsia-400" />
-                  Basic Video Editing (CapCut)
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-fuchsia-400" />
-                  Introductory Coding (HTML/Scratch)
-                </li>
-              </ul>
             </div>
 
-            {/* Column 4: Languages & Communication */}
-            <div className="p-6 rounded-3xl bg-white border border-rose-100 shadow-xs">
-              <div className="w-10 h-10 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center mb-4">
-                <MessageSquare className="w-5 h-5" />
+            <div className="p-6 rounded-3xl bg-[#fbf7f2] border border-[#eadfcb] text-center flex flex-col justify-between">
+              <div>
+                <span className="text-[10px] font-black uppercase tracking-widest text-[#872942] px-3 py-1 rounded-full bg-[#dfb0ba] inline-block mb-4">
+                  COMMUNICATION
+                </span>
+                <h3 className="font-black text-base uppercase tracking-tight text-[#3d121e] mb-3">
+                  LANGUAGES
+                </h3>
+                <ul className="space-y-2 text-xs text-[#522a36] text-left">
+                  <li className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#872942]" />
+                    Bahasa Melayu (Native / C2)
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#872942]" />
+                    English (Fluent / CEFR B2)
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#872942]" />
+                    Introductory Arabic (School)
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#872942]" />
+                    Choral Speaking Expression
+                  </li>
+                </ul>
               </div>
-              <h3 className="font-bold text-sm uppercase tracking-wide text-slate-800 mb-3">Languages</h3>
-              <ul className="space-y-2 text-xs text-slate-600">
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-rose-400" />
-                  Bahasa Melayu (Native / C2)
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-rose-400" />
-                  English (Fluent / CEFR B2)
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-rose-400" />
-                  Basic School Arabic
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-rose-400" />
-                  Choral & Stage Reading
-                </li>
-              </ul>
             </div>
           </div>
         </div>
       </section>
 
-      {/* TEACHER & MENTOR COMMENDATIONS (Inspired by Slide 6 "ANALYTICS / REVIEWS") */}
-      <section className="py-20 border-t border-rose-100/80 bg-white/60">
+      {/* TEACHER COMMENDATIONS (Matching quote cards) */}
+      <section className="py-20 bg-[#3d121e] border-t border-[#521c2b]">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center max-w-2xl mx-auto mb-14">
-            <span className="font-script text-rose-500 text-3xl font-bold">Feedback & Commendations</span>
-            <h2 className="text-3xl sm:text-4xl font-black uppercase tracking-wider text-slate-800 mt-1">
-              TEACHER & MENTOR NOTES
+            <span className="text-xs font-black tracking-[0.25em] text-[#dfb0ba] uppercase block mb-1">
+              EDUCATOR FEEDBACK
+            </span>
+            <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-[#f5eee6]">
+              TEACHER{" "}
+              <span className="font-serif-italic font-normal text-[#dfb0ba] lowercase text-4xl sm:text-6xl">
+                notes.
+              </span>
             </h2>
-            <p className="text-sm text-slate-600 mt-2">
-              Feedback from educators and club advisors on classroom conduct, responsibility, and team contributions.
-            </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="p-6 rounded-3xl bg-white border border-rose-100 shadow-xs flex flex-col justify-between">
+            <div className="p-6 rounded-3xl bg-[#4a1827] border border-[#5e2032] flex flex-col justify-between">
               <div>
-                <div className="flex gap-1 text-amber-400 mb-3">
+                <div className="flex gap-1 text-[#dfb0ba] mb-3">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-amber-400" />
+                    <Star key={i} className="w-3.5 h-3.5 fill-[#dfb0ba]" />
                   ))}
                 </div>
-                <p className="text-xs text-slate-600 leading-relaxed italic">
+                <p className="text-xs text-[#e5d8cf] leading-relaxed italic">
                   &ldquo;Hana Delisha is an exceptionally attentive and courteous student. She consistently asks thoughtful questions in science and supports her peers with patience during group work.&rdquo;
                 </p>
               </div>
-              <div className="mt-6 pt-4 border-t border-rose-50">
-                <p className="text-xs font-bold text-slate-800">Cikgu Rohana</p>
-                <p className="text-[11px] text-rose-500">Form Teacher & Science Educator</p>
+              <div className="mt-6 pt-4 border-t border-[#5e2032]">
+                <p className="text-xs font-black text-white">Cikgu Rohana</p>
+                <p className="text-[11px] text-[#dfb0ba]">Form Teacher & Science Educator</p>
               </div>
             </div>
 
-            <div className="p-6 rounded-3xl bg-white border border-rose-100 shadow-xs flex flex-col justify-between">
+            <div className="p-6 rounded-3xl bg-[#4a1827] border border-[#5e2032] flex flex-col justify-between">
               <div>
-                <div className="flex gap-1 text-amber-400 mb-3">
+                <div className="flex gap-1 text-[#dfb0ba] mb-3">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-amber-400" />
+                    <Star key={i} className="w-3.5 h-3.5 fill-[#dfb0ba]" />
                   ))}
                 </div>
-                <p className="text-xs text-slate-600 leading-relaxed italic">
+                <p className="text-xs text-[#e5d8cf] leading-relaxed italic">
                   &ldquo;As Secretary of the STEM Club, Hana manages meeting agendas and club documentation with great maturity. Her reliability makes every club event seamless.&rdquo;
                 </p>
               </div>
-              <div className="mt-6 pt-4 border-t border-rose-50">
-                <p className="text-xs font-bold text-slate-800">Ustaz / Cikgu Azman</p>
-                <p className="text-[11px] text-rose-500">STEM & Innovation Club Advisor</p>
+              <div className="mt-6 pt-4 border-t border-[#5e2032]">
+                <p className="text-xs font-black text-white">Cikgu Azman</p>
+                <p className="text-[11px] text-[#dfb0ba]">STEM & Innovation Club Advisor</p>
               </div>
             </div>
 
-            <div className="p-6 rounded-3xl bg-white border border-rose-100 shadow-xs flex flex-col justify-between">
+            <div className="p-6 rounded-3xl bg-[#4a1827] border border-[#5e2032] flex flex-col justify-between">
               <div>
-                <div className="flex gap-1 text-amber-400 mb-3">
+                <div className="flex gap-1 text-[#dfb0ba] mb-3">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-amber-400" />
+                    <Star key={i} className="w-3.5 h-3.5 fill-[#dfb0ba]" />
                   ))}
                 </div>
-                <p className="text-xs text-slate-600 leading-relaxed italic">
+                <p className="text-xs text-[#e5d8cf] leading-relaxed italic">
                   &ldquo;Hana carries out her school prefect duties with quiet confidence, fairness, and exemplary discipline. She is a wonderful role model for junior students.&rdquo;
                 </p>
               </div>
-              <div className="mt-6 pt-4 border-t border-rose-50">
-                <p className="text-xs font-bold text-slate-800">Puan Noraini</p>
-                <p className="text-[11px] text-rose-500">Prefects Disciplinary Board Head</p>
+              <div className="mt-6 pt-4 border-t border-[#5e2032]">
+                <p className="text-xs font-black text-white">Puan Noraini</p>
+                <p className="text-[11px] text-[#dfb0ba]">Prefects Disciplinary Board Head</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* LET'S CONNECT / CONTACT SECTION (Inspired by Slide 8 & 9 "LET'S WORK TOGETHER") */}
-      <section id="contact" className="py-20 border-t border-rose-100/80">
+      {/* LET'S CONNECT (Matching "LET'S WORK TOGETHER AND CREATE SOMETHING GREAT" in bottom reference) */}
+      <section id="contact" className="py-20 md:py-28 bg-[#2d0a15] border-t border-[#521c2b]">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="rounded-3xl bg-white border border-rose-200 p-8 sm:p-12 md:p-16 shadow-lg shadow-rose-100 relative overflow-hidden">
-            {/* Top decorative pink bar */}
-            <div className="absolute top-0 left-0 right-0 h-3 bg-gradient-to-r from-rose-400 via-pink-400 to-rose-400" />
+          <div className="grid lg:grid-cols-12 gap-12 items-center">
+            
+            {/* Left Info Column */}
+            <div className="lg:col-span-6">
+              <span className="text-xs font-black tracking-[0.25em] text-[#dfb0ba] uppercase block mb-1">
+                COMMUNICATION & INQUIRIES
+              </span>
+              <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tight text-[#f5eee6] leading-[1.05] mb-6">
+                LET&apos;S CONNECT{" "}
+                <span className="font-serif-italic font-normal text-[#dfb0ba] lowercase text-4xl sm:text-6xl">
+                  and
+                </span>
+                <br />
+                CREATE SOMETHING GREAT.
+              </h2>
+              <p className="text-xs sm:text-sm text-[#e5d8cf] leading-relaxed mb-8">
+                Whether you are a teacher, school club coordinator, fellow student, or competition organizer looking to collaborate on academic or co-curricular projects, feel free to send a note!
+              </p>
 
-            <div className="grid lg:grid-cols-12 gap-12 items-center">
-              
-              {/* Left Info Column */}
-              <div className="lg:col-span-6">
-                <span className="font-script text-rose-500 text-3xl font-bold">Reach Out</span>
-                <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-wider text-slate-800 mt-1 mb-4">
-                  LET&apos;S CONNECT
-                </h2>
-                <p className="text-sm text-slate-600 leading-relaxed mb-8">
-                  Whether you are a teacher, school club coordinator, fellow student, or competition organizer looking to collaborate on academic or co-curricular projects, feel free to send a note!
-                </p>
-
-                <div className="space-y-4 text-xs">
-                  <div className="flex items-center gap-3 p-3 rounded-2xl bg-rose-50/80 border border-rose-100 text-slate-700">
-                    <div className="w-9 h-9 rounded-xl bg-rose-500 text-white flex items-center justify-center">
-                      <Mail className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <p className="font-bold text-slate-800">Student Contact Email</p>
-                      <a href="mailto:hana.delisha@schoolmail.my" className="text-rose-600 hover:underline">
-                        hana.delisha@schoolmail.my
-                      </a>
-                    </div>
+              <div className="space-y-3.5 text-xs">
+                <div className="flex items-center gap-3 p-3.5 rounded-2xl bg-[#3d121e] border border-[#521c2b]">
+                  <div className="w-10 h-10 rounded-xl bg-[#dfb0ba] text-[#3d121e] flex items-center justify-center font-bold">
+                    <Mail className="w-5 h-5" />
                   </div>
-
-                  <div className="flex items-center gap-3 p-3 rounded-2xl bg-rose-50/80 border border-rose-100 text-slate-700">
-                    <div className="w-9 h-9 rounded-xl bg-pink-500 text-white flex items-center justify-center">
-                      <MapPin className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <p className="font-bold text-slate-800">School & Location</p>
-                      <p className="text-slate-600">Selangor / Kuala Lumpur, Malaysia</p>
-                    </div>
+                  <div>
+                    <p className="font-black text-white uppercase tracking-wider">Student Contact Email</p>
+                    <a href="mailto:hana.delisha@schoolmail.my" className="text-[#dfb0ba] hover:underline font-bold">
+                      hana.delisha@schoolmail.my
+                    </a>
                   </div>
+                </div>
 
-                  <div className="flex items-center gap-3 p-3 rounded-2xl bg-rose-50/80 border border-rose-100 text-slate-700">
-                    <div className="w-9 h-9 rounded-xl bg-amber-500 text-white flex items-center justify-center">
-                      <ShieldCheck className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <p className="font-bold text-slate-800">Supervision Notice</p>
-                      <p className="text-slate-600">Communications are monitored by parents & school educators.</p>
-                    </div>
+                <div className="flex items-center gap-3 p-3.5 rounded-2xl bg-[#3d121e] border border-[#521c2b]">
+                  <div className="w-10 h-10 rounded-xl bg-[#dfb0ba] text-[#3d121e] flex items-center justify-center font-bold">
+                    <MapPin className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <p className="font-black text-white uppercase tracking-wider">Location & School</p>
+                    <p className="text-[#e5d8cf]">Selangor / Kuala Lumpur, Malaysia</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3 p-3.5 rounded-2xl bg-[#3d121e] border border-[#521c2b]">
+                  <div className="w-10 h-10 rounded-xl bg-[#dfb0ba] text-[#3d121e] flex items-center justify-center font-bold">
+                    <ShieldCheck className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <p className="font-black text-white uppercase tracking-wider">Supervision Notice</p>
+                    <p className="text-[#e5d8cf]">Communications are monitored by parents & educators.</p>
                   </div>
                 </div>
               </div>
+            </div>
 
-              {/* Right Form Column */}
-              <div className="lg:col-span-6">
-                <div className="p-6 sm:p-8 rounded-3xl bg-[#fff9fa] border border-rose-100">
-                  <h3 className="font-bold text-base text-slate-800 mb-1">Send a Message or Note</h3>
-                  <p className="text-xs text-slate-500 mb-6">Leave an encouraging message, feedback, or project inquiry.</p>
+            {/* Right Form Column in Warm Cream (Matching reference aesthetic) */}
+            <div className="lg:col-span-6">
+              <div className="p-8 sm:p-10 rounded-3xl bg-[#f5eee6] text-[#3d121e] shadow-2xl border border-[#eadfcb]">
+                <h3 className="font-black text-lg uppercase tracking-tight text-[#3d121e] mb-1">
+                  SEND A MESSAGE OR NOTE
+                </h3>
+                <p className="text-xs text-[#6e3d4c] font-medium mb-6">Leave an encouraging message, feedback, or school inquiry.</p>
 
-                  {formSubmitted ? (
-                    <div className="p-6 rounded-2xl bg-rose-100 border border-rose-300 text-center flex flex-col items-center">
-                      <CheckCircle2 className="w-10 h-10 text-rose-600 mb-2" />
-                      <h4 className="font-bold text-slate-800 text-sm">Thank you very much!</h4>
-                      <p className="text-xs text-slate-600 mt-1">
-                        Your message has been received. Hana will reply promptly with parent/teacher supervision.
-                      </p>
+                {formSubmitted ? (
+                  <div className="p-6 rounded-2xl bg-[#dfb0ba]/40 border border-[#dfb0ba] text-center flex flex-col items-center">
+                    <CheckCircle2 className="w-10 h-10 text-[#872942] mb-2" />
+                    <h4 className="font-black text-[#3d121e] text-sm uppercase tracking-wider">THANK YOU VERY MUCH!</h4>
+                    <p className="text-xs text-[#522a36] mt-1 font-medium">
+                      Your note has been captured. Hana will review it with parent/teacher supervision.
+                    </p>
+                  </div>
+                ) : (
+                  <form onSubmit={handleContactSubmit} className="space-y-4">
+                    <div>
+                      <label htmlFor="name" className="block text-xs font-black text-[#3d121e] uppercase tracking-wider mb-1">
+                        YOUR NAME
+                      </label>
+                      <input
+                        id="name"
+                        type="text"
+                        required
+                        placeholder="e.g. Cikgu Faridah / Classmate Sarah"
+                        value={formData.name}
+                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        className="w-full px-4 py-3 rounded-xl bg-[#fbf7f2] border border-[#eadfcb] focus:border-[#872942] focus:outline-none text-xs text-[#3d121e] font-medium"
+                      />
                     </div>
-                  ) : (
-                    <form onSubmit={handleContactSubmit} className="space-y-4">
+
+                    <div className="grid grid-cols-2 gap-3">
                       <div>
-                        <label htmlFor="name" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
-                          Your Name
+                        <label htmlFor="email" className="block text-xs font-black text-[#3d121e] uppercase tracking-wider mb-1">
+                          EMAIL
                         </label>
                         <input
-                          id="name"
-                          type="text"
+                          id="email"
+                          type="email"
                           required
-                          placeholder="e.g. Cikgu Faridah / Classmate Sarah"
-                          value={formData.name}
-                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                          className="w-full px-4 py-2.5 rounded-xl bg-white border border-rose-200 focus:border-rose-500 focus:outline-none text-xs text-slate-800"
+                          placeholder="your.email@example.com"
+                          value={formData.email}
+                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                          className="w-full px-4 py-3 rounded-xl bg-[#fbf7f2] border border-[#eadfcb] focus:border-[#872942] focus:outline-none text-xs text-[#3d121e] font-medium"
                         />
-                      </div>
-
-                      <div className="grid grid-cols-2 gap-3">
-                        <div>
-                          <label htmlFor="email" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
-                            Email
-                          </label>
-                          <input
-                            id="email"
-                            type="email"
-                            required
-                            placeholder="your.email@example.com"
-                            value={formData.email}
-                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                            className="w-full px-4 py-2.5 rounded-xl bg-white border border-rose-200 focus:border-rose-500 focus:outline-none text-xs text-slate-800"
-                          />
-                        </div>
-
-                        <div>
-                          <label htmlFor="relationship" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
-                            Role / Connection
-                          </label>
-                          <select
-                            id="relationship"
-                            value={formData.relationship}
-                            onChange={(e) => setFormData({ ...formData, relationship: e.target.value })}
-                            className="w-full px-4 py-2.5 rounded-xl bg-white border border-rose-200 focus:border-rose-500 focus:outline-none text-xs text-slate-800"
-                          >
-                            <option value="Teacher/School">Teacher / Educator</option>
-                            <option value="Classmate/Peer">Classmate / Peer</option>
-                            <option value="Competition Organizer">Competition Organizer</option>
-                            <option value="Parent/Family">Parent / Relative</option>
-                            <option value="Other">Other</option>
-                          </select>
-                        </div>
                       </div>
 
                       <div>
-                        <label htmlFor="message" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
-                          Message / Note
+                        <label htmlFor="role" className="block text-xs font-black text-[#3d121e] uppercase tracking-wider mb-1">
+                          CONNECTION
                         </label>
-                        <textarea
-                          id="message"
-                          rows={4}
-                          required
-                          placeholder="Hi Hana Delisha, congratulations on your achievements..."
-                          value={formData.message}
-                          onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                          className="w-full px-4 py-2.5 rounded-xl bg-white border border-rose-200 focus:border-rose-500 focus:outline-none text-xs text-slate-800 resize-none"
-                        />
+                        <select
+                          id="role"
+                          value={formData.role}
+                          onChange={(e) => setFormData({ ...formData, role: e.target.value })}
+                          className="w-full px-4 py-3 rounded-xl bg-[#fbf7f2] border border-[#eadfcb] focus:border-[#872942] focus:outline-none text-xs text-[#3d121e] font-medium"
+                        >
+                          <option value="Teacher/School">Teacher / Educator</option>
+                          <option value="Classmate/Peer">Classmate / Peer</option>
+                          <option value="Competition Organizer">Competition Organizer</option>
+                          <option value="Parent/Relative">Parent / Relative</option>
+                          <option value="Other">Other</option>
+                        </select>
                       </div>
+                    </div>
 
-                      <button
-                        type="submit"
-                        className="w-full py-3 rounded-full bg-rose-500 hover:bg-rose-600 text-white font-bold text-xs uppercase tracking-wider transition-all shadow-md shadow-rose-300/40 flex items-center justify-center gap-2 cursor-pointer"
-                      >
-                        <Send className="w-4 h-4" />
-                        Send Note
-                      </button>
-                    </form>
-                  )}
-                </div>
+                    <div>
+                      <label htmlFor="message" className="block text-xs font-black text-[#3d121e] uppercase tracking-wider mb-1">
+                        MESSAGE
+                      </label>
+                      <textarea
+                        id="message"
+                        rows={4}
+                        required
+                        placeholder="Hi Hana Delisha, congratulations on your achievements..."
+                        value={formData.message}
+                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                        className="w-full px-4 py-3 rounded-xl bg-[#fbf7f2] border border-[#eadfcb] focus:border-[#872942] focus:outline-none text-xs text-[#3d121e] font-medium resize-none"
+                      />
+                    </div>
+
+                    <button
+                      type="submit"
+                      className="w-full py-3.5 rounded-full bg-[#3d121e] hover:bg-[#872942] text-[#f5eee6] font-black text-xs uppercase tracking-widest transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer"
+                    >
+                      <Send className="w-4 h-4" />
+                      SEND NOTE
+                    </button>
+                  </form>
+                )}
               </div>
-
             </div>
+
           </div>
         </div>
       </section>
 
       {/* FOOTER */}
-      <footer className="py-10 border-t border-rose-100 bg-white text-center text-xs text-slate-500">
+      <footer className="py-10 bg-[#240811] text-center text-xs text-[#dfb0ba]/70 border-t border-[#421422]">
         <div className="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <span className="font-script text-rose-500 text-xl font-bold">Hana Delisha</span>
-            <span className="text-slate-300">•</span>
-            <span>Secondary School Student Portfolio (15 Years Old)</span>
+            <span className="font-black text-white uppercase tracking-wider">HANA DELISHA NAZRI</span>
+            <span className="text-[#521c2b]">•</span>
+            <span className="text-[11px] font-bold">Secondary School Student Portfolio (15 Years Old)</span>
           </div>
-          <div className="flex items-center gap-6 text-[11px] font-semibold text-slate-600">
-            <a href="#about" className="hover:text-rose-500">About</a>
-            <a href="#education" className="hover:text-rose-500">Education</a>
-            <a href="#activities" className="hover:text-rose-500">Kokurikulum</a>
-            <a href="#contact" className="hover:text-rose-500">Contact</a>
-            <a href="#" className="hover:text-rose-500 text-rose-600">Back to Top ↑</a>
+          <div className="flex items-center gap-6 text-[11px] font-extrabold uppercase tracking-widest text-[#dfb0ba]">
+            <a href="#about" className="hover:text-white">ABOUT</a>
+            <a href="#education" className="hover:text-white">EDUCATION</a>
+            <a href="#activities" className="hover:text-white">KOKURIKULUM</a>
+            <a href="#achievements" className="hover:text-white">ACHIEVEMENTS</a>
+            <a href="#" className="hover:text-white text-white">TOP ↑</a>
           </div>
         </div>
       </footer>

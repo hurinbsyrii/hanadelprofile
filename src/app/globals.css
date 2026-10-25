@@ -1,21 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  --background: #fff8fa;
-  --foreground: #2d1822;
-  --rose-primary: #d96b8c;
-  --rose-hover: #c45576;
-  --rose-soft: #faeaf0;
-  --rose-border: #f4cdd9;
-  --text-main: #2b1822;
-  --text-muted: #785b6b;
+  --background: #3d121e;
+  --foreground: #f5eee6;
+  --font-serif: var(--font-serif);
+  --font-sans: var(--font-sans);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-sans);
-  --font-script: var(--font-script);
+  --font-serif: var(--font-serif);
 }
 
 html {
@@ -29,15 +25,23 @@ body {
   overflow-x: hidden;
 }
 
-.font-script {
-  font-family: var(--font-script), cursive;
+.font-serif-italic {
+  font-family: var(--font-serif), Georgia, serif;
+  font-style: italic;
 }
 
-/* Custom aesthetic utility classes matching the pink editorial reference */
-.shadow-pink-glow {
-  box-shadow: 0 10px 30px -8px rgba(217, 107, 140, 0.25);
+/* Custom styling for editorial marquee */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
 }
 
-.shadow-soft {
-  box-shadow: 0 4px 20px -2px rgba(133, 67, 88, 0.08);
+.animate-marquee {
+  display: flex;
+  width: 200%;
+  animation: marquee 25s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
 }

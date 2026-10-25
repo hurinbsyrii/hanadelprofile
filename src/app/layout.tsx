@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Dancing_Script } from "next/font/google";
+import { Plus_Jakarta_Sans, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
 const jakartaSans = Plus_Jakarta_Sans({
@@ -8,9 +8,10 @@ const jakartaSans = Plus_Jakarta_Sans({
   weight: ["300", "400", "500", "600", "700", "800"],
 });
 
-const dancingScript = Dancing_Script({
-  variable: "--font-script",
+const playfairDisplay = Playfair_Display({
+  variable: "--font-serif",
   subsets: ["latin"],
+  style: ["normal", "italic"],
   weight: ["400", "500", "600", "700"],
 });
 
@@ -27,9 +28,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${jakartaSans.variable} ${dancingScript.variable} h-full antialiased`}
+      className={`${jakartaSans.variable} ${playfairDisplay.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#fff8fa] text-[#2e1c27] selection:bg-[#e07a97] selection:text-white">
+      <body className="min-h-full flex flex-col bg-[#3d121e] text-[#f5eee6] selection:bg-[#dfb0ba] selection:text-[#3d121e]">
         {children}
       </body>
     </html>
