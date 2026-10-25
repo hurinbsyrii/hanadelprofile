@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Student portfolio
 
-## Getting Started
+A nine-page Next.js student portfolio inspired by vintage botanical stationery: forest green, warm cream, blush stripes, serif typography, and scrapbook frames.
 
-First, run the development server:
+## Run locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000. Run `npm run build` to verify a production build.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Add real information
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `src/lib/portfolio.ts`: profile, navigation, projects, awards, activities, certificates, and gallery entries. All current entries are samples.
+- `src/components/portfolio.tsx`: page sections and introductory copy, education timeline and sample grades, hobbies, career goals, and skill descriptions.
+- `src/app/globals.css`: theme variables at the top, desktop layouts, and responsive breakpoints.
+- `public/images/student-portrait.png`: fictional AI-generated sample portrait. Replace this with a real approved image, or change `profile.portrait`.
+- `src/app/layout.tsx`: site-wide metadata and typography.
 
-## Learn More
+Routes: `/`, `/about`, `/education`, `/achievements`, `/activities`, `/projects`, `/skills`, `/gallery`, `/contact`.
 
-To learn more about Next.js, take a look at the following resources:
+The gallery and achievement filters, native image/certificate dialogs, mobile navigation, and expandable project details are implemented for the browser. Certificates are clearly labelled sample layouts, not issued documents. Project images are original vector illustrations. Replace them with actual project photos or screenshots when available.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The contact form prepares a mailto draft; it does not send, store, or claim delivery of messages. Replace the reserved `example.com` email before real use. Optional GitHub and LinkedIn URLs are hidden until supplied in the profile data.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+For an under-18 portfolio, keep location at city/state level. Avoid full birth dates, phone numbers, home addresses, and private school records. Review certificates for private information before adding them.
 
-## Deploy on Vercel
+## Sample portrait provenance
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Created with the built-in image generation tool. Final asset: `public/images/student-portrait.png`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Final generation prompt:
+
+> Use case: photorealistic-natural. Asset type: fictional sample portrait for a Malaysian secondary school student portfolio website. A friendly 15-year-old Malaysian girl wearing an olive forest-green hijab and modest ivory long-sleeved blouse, holding two cream books against her chest, standing in a sunlit leafy school garden. Natural candid editorial portrait, waist up, subject centered, warmly smiling, soft film grain, muted forest green foliage, warm ivory and subtle blush tones, vintage analog film aesthetic. Portrait 4:5 composition. Age-appropriate school portrait. No text, no logos, no watermark. Fictional person, not based on any real individual.

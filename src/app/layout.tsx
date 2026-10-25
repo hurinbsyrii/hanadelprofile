@@ -1,37 +1,27 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Playfair_Display } from "next/font/google";
+import { DM_Sans, Cormorant_Garamond, Dancing_Script } from "next/font/google";
+import { SiteHeader, SiteFooter } from "@/components/portfolio";
 import "./globals.css";
 
-const jakartaSans = Plus_Jakarta_Sans({
-  variable: "--font-sans",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
-});
-
-const playfairDisplay = Playfair_Display({
-  variable: "--font-serif",
-  subsets: ["latin"],
-  style: ["normal", "italic"],
-  weight: ["400", "500", "600", "700"],
-});
+const sans = DM_Sans({ variable: "--font-body", subsets: ["latin"] });
+const serif = Cormorant_Garamond({ variable: "--font-editorial", subsets: ["latin"], weight: ["400", "500", "600", "700"] });
+const script = Dancing_Script({ variable: "--font-handwriting", subsets: ["latin"], weight: ["400", "500", "600", "700"] });
 
 export const metadata: Metadata = {
-  title: "Hana Delisha binti Nazri | Student Portfolio",
-  description: "Secondary school student portfolio of Hana Delisha binti Nazri (15 years old) — showcasing education, leadership, co-curricular activities, and school projects.",
+  title: "Hana Delisha | A little portfolio of possibility",
+  description: "A sample secondary school portfolio: learning, creativity, school life, and a student's journey. All content is illustrative.",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html
-      lang="en"
-      className={`${jakartaSans.variable} ${playfairDisplay.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col bg-[#3d121e] text-[#f5eee6] selection:bg-[#dfb0ba] selection:text-[#3d121e]">
+    <html lang="en" className={`${sans.variable} ${serif.variable} ${script.variable}`}>
+      {/* Extensions may inject body attributes (e.g. cz-shortcut-listen) before hydration.
+          Suppress only this element's mismatch; descendant checks remain enabled. */}
+      <body suppressHydrationWarning>
+        <a className="skip-link" href="#main">Skip to content</a>
+        <SiteHeader />
         {children}
+        <SiteFooter />
       </body>
     </html>
   );
